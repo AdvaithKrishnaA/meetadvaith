@@ -1,8 +1,10 @@
 type Project = {
   name: string
   description: string
-  link: string
-  video: string
+  link?: string
+  video?: string
+  image?: string
+  showForm?: boolean
   id: string
 }
 
@@ -29,48 +31,38 @@ type SocialLink = {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Motion Primitives Pro',
+    name: 'High On Product',
     description:
-      'Advanced components and templates to craft beautiful websites.',
-    link: 'https://pro.motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
+      'A limited no-nonsense initiative to help crack entry level product interviews',
+    link: 'https://highonproduct.com',
+    image: '/highonproduct.svg',
     id: 'project1',
   },
   {
-    name: 'Motion Primitives',
-    description: 'UI kit to make beautiful, animated interfaces.',
-    link: 'https://motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/XSfIvT7BUWbPRXhrbLed/ee6871c9-8400-49d2-8be9-e32675eabf7e.mp4?_a=DATAdtAAZAA0',
+    name: 'Case Portfolio',
+    description: '(Request Access) Some of my best work',
+    image: '/casestudies.png',
+    showForm: true,
     id: 'project2',
   },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    company: 'Reglazed Studio',
-    title: 'CEO',
-    start: '2024',
+    company: 'Media.net',
+    title: 'Senior Product Analyst, ML Team',
+    start: 'Jul 2024',
     end: 'Present',
-    link: 'https://ibelick.com',
+    link: 'https://www.linkedin.com/in/advaithkrishnaa/',
     id: 'work1',
   },
   {
-    company: 'Freelance',
-    title: 'Design Engineer',
-    start: '2022',
-    end: '2024',
-    link: 'https://ibelick.com',
+    company: 'MarianaAI',
+    title: 'Founder\'s Associate',
+    start: 'Oct 2023',
+    end: 'Jul 2024',
+    link: 'https://www.linkedin.com/in/advaithkrishnaa/',
     id: 'work2',
-  },
-  {
-    company: 'Freelance',
-    title: 'Front-end Developer',
-    start: '2017',
-    end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work3',
   },
 ]
 
