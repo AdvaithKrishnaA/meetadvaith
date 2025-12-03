@@ -4,6 +4,33 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Zap } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import { TextMorph } from '@/components/ui/text-morph'
+
+function CopyButton() {
+  const [text, setText] = useState('Copy')
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : ''
+
+  useEffect(() => {
+    setTimeout(() => {
+      setText('Copy')
+    }, 2000)
+  }, [text])
+
+  return (
+    <button
+      onClick={() => {
+        setText('Copied')
+        navigator.clipboard.writeText(currentUrl)
+      }}
+      className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors dark:text-zinc-400"
+      type="button"
+    >
+      <TextMorph>{text}</TextMorph>
+      <span>URL</span>
+    </button>
+  )
+}
 
 export function Header() {
   const pathname = usePathname()
@@ -13,7 +40,7 @@ export function Header() {
     <header className="mb-8 flex items-center justify-between">
       <div className="flex items-center gap-3">
         <Avatar className="size-12">
-          <AvatarImage src="/avatar.jpg" alt="Advaith Krishna A" />
+          <AvatarImage src="/avatar.png" alt="Advaith Krishna A" />
           <AvatarFallback className="bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100">
             <Zap className="size-6" />
           </AvatarFallback>
@@ -33,7 +60,9 @@ export function Header() {
           </TextEffect>
         </div>
       </div>
-      {!isBlogPage && (
+      {isBlogPage ? (
+        <CopyButton />
+      ) : (
         <a
           href="#blog"
           className="text-black dark:text-white transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"

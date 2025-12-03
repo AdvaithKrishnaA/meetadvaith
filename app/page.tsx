@@ -20,6 +20,7 @@ import {
   SOCIAL_LINKS,
 } from './data'
 import { useEffect, useRef } from 'react'
+import { getCalApi } from '@calcom/embed-react'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -308,9 +309,16 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  useEffect(() => {
+    ;(async function () {
+      const cal = await getCalApi({ namespace: 'secret' })
+      cal('ui', { hideEventTypeDetails: false, layout: 'month_view' })
+    })()
+  }, [])
+
   return (
     <motion.main
-      className="space-y-16"
+      className="space-y-24"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
@@ -321,10 +329,36 @@ export default function Personal() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+            Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at meetadvaith@duck.com or block my calendar {' '}
+            <button
+              data-cal-namespace="secret"
+              data-cal-link="meetadvaith/secret"
+              data-cal-config='{"layout":"month_view"}'
+              className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+            >
+            here.
+            </button>
           </p>
         </div>
+        <h3 className="mt-6 mb-3 text-lg font-medium">More about me</h3>
+        <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
+          <li className="flex gap-2">
+            <span className="text-zinc-400 dark:text-zinc-500">•</span>
+            <span>Graduated from IIT Guwahati (Class of '24).</span>
+          </li>
+          <li className="flex gap-2">
+            <span className="text-zinc-400 dark:text-zinc-500">•</span>
+            <span>Working at Media.net, focusing on ML/AI Products for Ad-Tech.</span>
+          </li>
+          <li className="flex gap-2">
+            <span className="text-zinc-400 dark:text-zinc-500">•</span>
+            <span>Currently based in Mumbai; grew up in Kottayam and Alleppey, Kerala.</span>
+          </li>
+          <li className="flex gap-2">
+            <span className="text-zinc-400 dark:text-zinc-500">•</span>
+            <span>Curious about consumer psychology; socially an ambivert who appreciates the right kind of interactions</span>
+          </li>
+        </ul>
       </motion.section>
 
       <motion.section
@@ -369,7 +403,7 @@ export default function Personal() {
         </div>
       </motion.section>
 
-      <motion.section
+      {/* <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
@@ -405,7 +439,7 @@ export default function Personal() {
             </a>
           ))}
         </div>
-      </motion.section>
+      </motion.section> */}
 
       <motion.section
         id="blog"

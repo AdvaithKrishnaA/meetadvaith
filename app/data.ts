@@ -68,50 +68,42 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: 'Exploring the Intersection of Design, AI, and Design Engineering',
-    description: 'How AI is changing the way we design',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    title: 'The Behavioral Economics of Love',
+    description: 'Spoiler: our choices in love aren\'t always rational!',
+    link: '/blog/behavioral-economics-of-love',
     uid: 'blog-1',
   },
   {
-    title: 'Why I left my job to start my own company',
-    description:
-      'A deep dive into my decision to leave my job and start my own company',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    title: 'Anchored Down: Psychology of Coupon Use',
+    description: 'The psychology behind why coupons hook us runs deeper than saving money.',
+    link: '/blog/anchored-down-psychology-of-coupon-use',
     uid: 'blog-2',
   },
   {
-    title: 'What I learned from my first year of freelancing',
-    description:
-      'A look back at my first year of freelancing and what I learned',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    title: 'Bad Arguments and Bogus Logic: Navigating Logical Fallacies',
+    description: 'Understanding common logical fallacies and how they shape our reasoning and decision-making.',
+    link: '/blog/bad-arguments-and-bogus-logic-navigating-logical-fallacies',
     uid: 'blog-3',
-  },
-  {
-    title: 'How to Export Metadata from MDX for Next.js SEO',
-    description: 'A guide on exporting metadata from MDX files to leverage Next.js SEO features.',
-    link: '/blog/example-mdx-metadata',
-    uid: 'blog-4',
   },
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    label: 'Github',
-    link: 'https://github.com/ibelick',
+    label: 'Calendar',
+    link: 'https://cal.com/meetadvaith/secret',
   },
   {
-    label: 'Twitter',
-    link: 'https://twitter.com/ibelick',
+    label: 'X',
+    link: 'https://twitter.com/advaithkrishnaa',
   },
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
+    link: 'https://www.linkedin.com/in/advaithkrishnaa',
   },
   {
     label: 'Instagram',
-    link: 'https://www.instagram.com/ibelick',
+    link: 'https://www.instagram.com/advaithkrishnaa',
   },
 ]
 
-export const EMAIL = 'your@email.com'
+export const EMAIL = 'meetadvaith@duck.com'

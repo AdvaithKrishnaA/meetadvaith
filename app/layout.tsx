@@ -17,10 +17,10 @@ export const metadata: Metadata = {
     canonical: '/'
   },
   title: {
-    default: 'Advaith Krishna A - Product+Tech+Consumer Behaviour',
+    default: 'Advaith Krishna A - Tech + Product',
     template: '%s | Advaith Krishna A'
   },
-  description:  'Personal website of Advaith Krishna A - Product+Tech+Consumer Behaviour',
+  description:  'Personal website of Advaith Krishna A',
 };
 
 const geist = Geist({
