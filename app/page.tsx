@@ -327,9 +327,22 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
+        {/* Social Links */}
+        <div className="flex items-center justify-start space-x-3 mb-8">
+          {SOCIAL_LINKS.map((link) => (
+            <MagneticSocialLink key={link.label} link={link.link}>
+              {link.label}
+            </MagneticSocialLink>
+          ))}
+        </div>
+        
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at meetadvaith@duck.com or block my calendar {' '}
+            Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
+            <a href="mailto:meetadvaith@duck.com" className="underline hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+              meetadvaith@duck.com
+            </a>
+            {' '}or block my calendar{' '}
             <button
               data-cal-namespace="secret"
               data-cal-link="meetadvaith/secret"
@@ -478,25 +491,7 @@ export default function Personal() {
         </div>
       </motion.section>
 
-      <motion.section
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-      >
-        <h3 className="mb-5 text-lg font-medium">Connect</h3>
-        <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          Feel free to contact me at{' '}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            {EMAIL}
-          </a>
-        </p>
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
-        </div>
-      </motion.section>
+
     </motion.main>
   )
 }
