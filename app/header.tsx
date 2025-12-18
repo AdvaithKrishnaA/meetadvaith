@@ -39,14 +39,14 @@ export function Header() {
   return (
     <header className="mb-8 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <Avatar className="size-12">
+        <Avatar className="size-20">
           <AvatarImage src="/avatar.png" alt="Advaith Krishna A" />
           <AvatarFallback className="bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100">
-            <Zap className="size-6" />
+            <Zap className="size-12" />
           </AvatarFallback>
         </Avatar>
         <div>
-          <Link href="/" className="font-medium text-black dark:text-white">
+          <Link href="/" className="font-medium text-xl text-black dark:text-white">
             Advaith Krishna A
           </Link>
           <TextEffect
