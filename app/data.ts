@@ -92,17 +92,17 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Calendar',
     link: 'https://cal.com/meetadvaith/secret',
   },
-  {
-    label: 'X',
-    link: 'https://twitter.com/advaithkrishnaa',
-  },
+  // {
+  //   label: 'X',
+  //   link: 'https://twitter.com/advaithkrishnaa',
+  // },
   {
     label: 'LinkedIn',
     link: 'https://www.linkedin.com/in/advaithkrishnaa',
   },
   {
     label: 'Instagram',
-    link: 'https://www.instagram.com/advaithkrishnaa',
+    link: 'https://www.instagram.com/meetadvaith',
   },
 ]
 
