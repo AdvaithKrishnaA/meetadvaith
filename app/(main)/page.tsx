@@ -18,7 +18,7 @@ import {
   BLOG_POSTS,
   EMAIL,
   SOCIAL_LINKS,
-} from './data'
+} from '../data'
 import { useEffect, useRef } from 'react'
 import { getCalApi } from '@calcom/embed-react'
 
@@ -102,11 +102,11 @@ function ProjectMedia({
           duration: 0.3,
         }}
       >
-        <MorphingDialogTrigger>
+        <MorphingDialogTrigger className="group">
           <img
             src={image}
             alt="Project preview"
-            className="aspect-video w-full cursor-zoom-in rounded-xl object-cover"
+            className="aspect-video w-full cursor-zoom-in rounded-xl object-cover grayscale transition-all duration-300 md:group-hover:grayscale-0"
           />
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
@@ -199,13 +199,13 @@ function ProjectMedia({
           duration: 0.3,
         }}
       >
-        <MorphingDialogTrigger>
+        <MorphingDialogTrigger className="group">
           <video
             src={video}
             autoPlay
             loop
             muted
-            className="aspect-video w-full cursor-zoom-in rounded-xl"
+            className="aspect-video w-full cursor-zoom-in rounded-xl grayscale transition-all duration-300 md:group-hover:grayscale-0"
           />
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
@@ -407,9 +407,9 @@ export default function Personal() {
                     {project.name}
                   </span>
                 )}
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
+                {/* <p className="text-base text-zinc-600 dark:text-zinc-400">
                   {project.description}
-                </p>
+                </p> */}
               </div>
             </div>
           ))}

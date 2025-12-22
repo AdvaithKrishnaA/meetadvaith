@@ -39,6 +39,13 @@ export const PROJECTS: Project[] = [
     id: 'project1',
   },
   {
+    name: 'Ima',
+    description: 'A quiet macOS menu bar app where tasks exist only for the time you decide they deserve',
+    link: '/ima',
+    image: '/ima-logo.svg',
+    id: 'project0',
+  },
+  {
     name: 'Case Portfolio',
     description: '(Request Access) Some of my best work',
     image: '/casestudies.png',
