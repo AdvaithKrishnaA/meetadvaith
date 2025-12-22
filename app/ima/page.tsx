@@ -23,14 +23,14 @@ function DownloadModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
         <button onClick={onClose} className="absolute right-4 top-4 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200">
           <X className="h-5 w-5" />
         </button>
-        <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">Opening ima</h3>
+        <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">Opening Ima</h3>
         <div className="space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
-          <p>Since ima is not notarized by Apple, macOS may block it from opening.</p>
+          <p>Since Ima is not notarized by Apple, macOS may block it from opening.</p>
           <p>If the app doesn&apos;t open:</p>
-          <ol className="list-decimal space-y-2 pl-5">
+          <ol className="list-decImal space-y-2 pl-5">
             <li>Go to <span className="font-medium text-zinc-900 dark:text-zinc-100">System Settings → Privacy & Security</span></li>
             <li>Scroll down to the Security section</li>
-            <li>You&apos;ll see a message about ima being blocked</li>
+            <li>You&apos;ll see a message about Ima being blocked</li>
             <li>Click <span className="font-medium text-zinc-900 dark:text-zinc-100">Open Anyway</span></li>
           </ol>
         </div>
@@ -72,35 +72,39 @@ export default function ImaPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">What ima is</h2>
+        <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">What Ima is</h2>
         <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
-          <p>ima is built on a simple idea:</p>
+          <p>Ima is built on a simple idea:</p>
           <p className="italic">Attention is finite. Time is a choice.</p>
           <p>When you create a task, you also choose how long it&apos;s worth caring about.<br />That time can be hours or days — up to a maximum of seven days.<br />When the time ends, the task disappears.</p>
           <p>No backlog. No carryover. No guilt.</p>
         </div>
       </section>
 
+      <section>
+        <img src="/ima-preview.png" alt="ima app preview" className="w-100 rounded-xl" />
+      </section>
+
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">How time works in ima</h2>
+        <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">How time works in Ima</h2>
         <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
           <p>Every task has:</p>
           <ul className="space-y-1"><li>– a name</li><li>– a time window you set</li><li>– and a quiet ending</li></ul>
           <p>The maximum time is intentionally capped.</p>
-          <p>If something matters longer than a week, ima assumes it belongs somewhere else — or it needs to be re-chosen, consciously.</p>
-          <p>ima does not keep things alive by default.</p>
+          <p>If something matters longer than a week, Ima assumes it belongs somewhere else — or it needs to be re-chosen, consciously.</p>
+          <p>Ima does not keep things alive by default.</p>
         </div>
       </section>
 
       <section className="space-y-4">
         <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">Why there is no edit or delete</h2>
         <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
-          <p>ima intentionally does not support editing or deleting tasks.</p>
+          <p>Ima intentionally does not support editing or deleting tasks.</p>
           <p>Once a task is created and time is set, the only choices are:</p>
           <ul className="space-y-1"><li>– do it</li><li>– or let it go</li></ul>
           <p>Editing and deleting often become ways to:</p>
           <ul className="space-y-1"><li>– renegotiate intention</li><li>– postpone clarity</li><li>– keep tasks around without deciding</li></ul>
-          <p>ima treats setting a task and its time as a moment of honesty.</p>
+          <p>Ima treats setting a task and its time as a moment of honesty.</p>
           <p>If that honesty no longer holds, the task is allowed to fade.</p>
         </div>
       </section>
@@ -108,9 +112,9 @@ export default function ImaPage() {
       <section className="space-y-4">
         <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">Why there are no recurring tasks (yet)</h2>
         <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
-          <p>ima does not currently support recurring tasks.</p>
+          <p>Ima does not currently support recurring tasks.</p>
           <p>Repeating tasks often outlive their importance simply because they repeat.</p>
-          <p>ima avoids creating obligations that persist without being re-considered.</p>
+          <p>Ima avoids creating obligations that persist without being re-considered.</p>
           <p>Recurring tasks will only be added if they can exist without:</p>
           <ul className="space-y-1"><li>– stacking missed instances</li><li>– creating invisible pressure</li><li>– extending attention by default</li></ul>
           <p>When they arrive, they will still obey the same rule:<br />each instance must earn its time.</p>
@@ -118,11 +122,11 @@ export default function ImaPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">What ima is not</h2>
+        <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">What Ima is not</h2>
         <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
-          <p>ima is not:</p>
+          <p>Ima is not:</p>
           <ul className="space-y-1"><li>– a task manager for everything</li><li>– a system for long-term planning</li><li>– a place to store intentions indefinitely</li></ul>
-          <p>ima is a small space for what matters within the time you choose.</p>
+          <p>Ima is a small space for what matters within the time you choose.</p>
         </div>
       </section>
     </main>
