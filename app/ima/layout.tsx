@@ -1,6 +1,12 @@
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
 import { Footer } from '../footer'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'ima - Only what matters, now',
+  description: 'A quiet macOS app where tasks exist only for the time you decide they deserve.',
+}
 
 export default function ImaLayout({
   children,
