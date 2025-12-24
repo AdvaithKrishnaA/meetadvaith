@@ -10,12 +10,12 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nim-fawn.vercel.app/'),
+  metadataBase: new URL('https://meetadvaith.com'),
   alternates: {
     canonical: '/'
   },
   title: {
-    default: 'Advaith Krishna A - Tech + Product',
+    default: 'Advaith Krishna A - Product & Tech',
     template: '%s | Advaith Krishna A'
   },
   description:  'Personal website of Advaith Krishna A',
