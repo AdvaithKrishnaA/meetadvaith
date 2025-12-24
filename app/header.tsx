@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { TextMorph } from '@/components/ui/text-morph'
+import posthog from 'posthog-js'
 
 function CopyButton() {
   const [text, setText] = useState('Copy')
@@ -17,12 +18,18 @@ function CopyButton() {
     }, 2000)
   }, [text])
 
+  const handleCopy = () => {
+    setText('Copied')
+    navigator.clipboard.writeText(currentUrl)
+    posthog.capture('url_copied', {
+      copied_url: currentUrl,
+      page_path: typeof window !== 'undefined' ? window.location.pathname : '',
+    })
+  }
+
   return (
     <button
-      onClick={() => {
-        setText('Copied')
-        navigator.clipboard.writeText(currentUrl)
-      }}
+      onClick={handleCopy}
       className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors dark:text-zinc-400"
       type="button"
     >

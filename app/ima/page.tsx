@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { X } from 'lucide-react'
+import posthog from 'posthog-js'
 
 function ImaLogo({ className }: { className?: string }) {
   return (
@@ -46,6 +47,10 @@ export default function ImaPage() {
   const [showModal, setShowModal] = useState(false)
 
   const handleDownload = () => {
+    posthog.capture('ima_download_clicked', {
+      download_file: 'Ima.zip',
+      platform: 'macOS',
+    })
     const link = document.createElement('a')
     link.href = '/Ima.zip'
     link.download = 'Ima.zip'

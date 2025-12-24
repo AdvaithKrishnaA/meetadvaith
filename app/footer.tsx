@@ -3,6 +3,7 @@ import { AnimatedBackground } from '@/components/ui/animated-background'
 import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+import posthog from 'posthog-js'
 
 const THEMES_OPTIONS = [
   {
@@ -45,7 +46,12 @@ function ThemeSwitch() {
       }}
       enableHover={false}
       onValueChange={(id) => {
-        setTheme(id as string)
+        const newTheme = id as string
+        setTheme(newTheme)
+        posthog.capture('theme_switched', {
+          new_theme: newTheme,
+          previous_theme: theme,
+        })
       }}
     >
       {THEMES_OPTIONS.map((theme) => {

@@ -21,6 +21,7 @@ import {
 } from '../data'
 import { useEffect, useRef } from 'react'
 import { getCalApi } from '@calcom/embed-react'
+import posthog from 'posthog-js'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -93,6 +94,26 @@ function ProjectMedia({
   link,
   showForm,
 }: ProjectMediaProps) {
+  const handleProjectDetailsViewed = () => {
+    posthog.capture('project_details_viewed', {
+      project_name: name,
+      project_description: description,
+      has_form: showForm || false,
+    })
+    if (showForm) {
+      posthog.capture('case_study_access_requested', {
+        project_name: name,
+      })
+    }
+  }
+
+  const handleProjectLinkClick = () => {
+    posthog.capture('project_clicked', {
+      project_name: name,
+      project_link: link,
+    })
+  }
+
   if (image) {
     return (
       <MorphingDialog
@@ -103,11 +124,13 @@ function ProjectMedia({
         }}
       >
         <MorphingDialogTrigger className="group">
-          <img
-            src={image}
-            alt="Project preview"
-            className="aspect-video w-full cursor-zoom-in rounded-xl object-cover grayscale transition-all duration-300 md:group-hover:grayscale-0"
-          />
+          <div onClick={handleProjectDetailsViewed}>
+            <img
+              src={image}
+              alt="Project preview"
+              className="aspect-video w-full cursor-zoom-in rounded-xl object-cover grayscale transition-all duration-300 md:group-hover:grayscale-0"
+            />
+          </div>
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
           <MorphingDialogContent className="relative max-w-4xl">
@@ -140,6 +163,7 @@ function ProjectMedia({
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={handleProjectLinkClick}
                     className="flex shrink-0 items-center gap-1 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
                   >
                     Visit
@@ -200,13 +224,15 @@ function ProjectMedia({
         }}
       >
         <MorphingDialogTrigger className="group">
-          <video
-            src={video}
-            autoPlay
-            loop
-            muted
-            className="aspect-video w-full cursor-zoom-in rounded-xl grayscale transition-all duration-300 md:group-hover:grayscale-0"
-          />
+          <div onClick={handleProjectDetailsViewed}>
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              className="aspect-video w-full cursor-zoom-in rounded-xl grayscale transition-all duration-300 md:group-hover:grayscale-0"
+            />
+          </div>
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
           <MorphingDialogContent className="relative max-w-4xl">
@@ -224,6 +250,7 @@ function ProjectMedia({
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleProjectLinkClick}
                   className="flex shrink-0 items-center gap-1 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
                 >
                   Visit
@@ -277,14 +304,24 @@ function ProjectMedia({
 function MagneticSocialLink({
   children,
   link,
+  label,
 }: {
   children: React.ReactNode
   link: string
+  label: string
 }) {
+  const handleClick = () => {
+    posthog.capture('social_link_clicked', {
+      link_label: label,
+      link_url: link,
+    })
+  }
+
   return (
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
+        onClick={handleClick}
         className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
       >
         {children}
@@ -330,7 +367,7 @@ export default function Personal() {
         {/* Social Links */}
         <div className="flex items-center justify-start space-x-3 mb-8">
           {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
+            <MagneticSocialLink key={link.label} link={link.link} label={link.label}>
               {link.label}
             </MagneticSocialLink>
           ))}
@@ -339,7 +376,11 @@ export default function Personal() {
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
-            <a href="mailto:meetadvaith@duck.com" className="underline hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+            <a
+              href="mailto:meetadvaith@duck.com"
+              className="underline hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+              onClick={() => posthog.capture('email_link_clicked', { email: 'meetadvaith@duck.com' })}
+            >
               meetadvaith@duck.com
             </a>
             {' '}or block my calendar{' '}
@@ -348,6 +389,7 @@ export default function Personal() {
               data-cal-link="meetadvaith/secret"
               data-cal-config='{"layout":"month_view"}'
               className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+              onClick={() => posthog.capture('calendar_booking_clicked', { calendar_link: 'meetadvaith/secret' })}
             >
             here
             </button>.
@@ -398,6 +440,7 @@ export default function Personal() {
                     className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
                     href={project.link}
                     target="_blank"
+                    onClick={() => posthog.capture('project_clicked', { project_name: project.name, project_link: project.link })}
                   >
                     {project.name}
                     <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
@@ -476,6 +519,7 @@ export default function Personal() {
                 className="-mx-3 rounded-xl px-3 py-3"
                 href={post.link}
                 data-id={post.uid}
+                onClick={() => posthog.capture('blog_post_clicked', { post_title: post.title, post_link: post.link, post_uid: post.uid })}
               >
                 <div className="flex flex-col space-y-1">
                   <h4 className="font-normal dark:text-zinc-100">
