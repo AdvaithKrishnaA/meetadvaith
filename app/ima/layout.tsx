@@ -4,9 +4,40 @@ import { Footer } from '../footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'ima - Only what matters, now',
-  description: 'A quiet macOS app where tasks exist only for the time you decide they deserve.',
-}
+  title: 'Ima — Manage Tasks that Matter',
+  description:
+    'Tasks that fade away when their time ends. A minimal macOS app for attention, not backlog.',
+
+  openGraph: {
+    title: 'Ima — Manage Tasks that Matter',
+    description:
+      'Tasks that fade away when their time ends. A minimal macOS app for attention, not backlog.',
+    url: 'https://meetadvaith.com/ima',
+    siteName: 'Ima',
+    images: [
+      {
+        url: 'https://meetadvaith.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Ima — Manage Tasks that Matter',
+      },
+    ],
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ima — Manage Tasks that Matter',
+    description:
+      'A quiet macOS task app where tasks exist briefly and fade away when time ends.',
+    images: ['https://meetadvaith.com/og-image.png'],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function ImaLayout({
   children,

@@ -75,10 +75,25 @@ export default function ImaPage() {
         <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">What Ima is</h2>
         <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
           <p>Ima is built on a simple idea:</p>
+
           <p className="italic">Attention is finite. Time is a choice.</p>
-          <p>When you create a task, you also choose how long it&apos;s worth caring about.<br />That time can be hours or days — up to a maximum of seven days.<br />When the time ends, the task disappears.</p>
+
+          <p>
+            <span className="italic">Ima</span> (いま) comes from Japanese, and means
+            <span className="italic"> “now.”</span>
+          </p>
+
+          <p>
+            When you create a task, you also choose how long it&apos;s worth caring about.
+            <br />
+            That time can be hours or days — up to a maximum of seven days.
+            <br />
+            When that time ends, the task disappears.
+          </p>
+
           <p>No backlog. No carryover. No guilt.</p>
         </div>
+
       </section>
 
       <section>
@@ -88,10 +103,9 @@ export default function ImaPage() {
       <section className="space-y-4">
         <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">How time works in Ima</h2>
         <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
-          <p>Every task has:</p>
-          <ul className="space-y-1"><li>– a name</li><li>– a time window you set</li><li>– and a quiet ending</li></ul>
+          <p>Every task has a time window you set, and incomplete tasks fade away at the end of that window.</p>
           <p>The maximum time is intentionally capped.</p>
-          <p>If something matters longer than a week, Ima assumes it belongs somewhere else — or it needs to be re-chosen, consciously.</p>
+          <p>If something matters longer, Ima assumes it belongs somewhere else — or it needs to be re-chosen, consciously.</p>
           <p>Ima does not keep things alive by default.</p>
         </div>
       </section>
@@ -101,23 +115,32 @@ export default function ImaPage() {
         <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
           <p>Ima intentionally does not support editing or deleting tasks.</p>
           <p>Once a task is created and time is set, the only choices are:</p>
-          <ul className="space-y-1"><li>– do it</li><li>– or let it go</li></ul>
+          <ul className="space-y-1"><li>– do it and mark the task as complete,</li><li>– or let it go.</li></ul>
           <p>Editing and deleting often become ways to:</p>
-          <ul className="space-y-1"><li>– renegotiate intention</li><li>– postpone clarity</li><li>– keep tasks around without deciding</li></ul>
+          <ul className="space-y-1"><li>– renegotiate intention</li><li>– postpone clarity</li><li>– keep tasks around without deciding.</li></ul>
           <p>Ima treats setting a task and its time as a moment of honesty.</p>
           <p>If that honesty no longer holds, the task is allowed to fade.</p>
         </div>
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">Why there are no recurring tasks (yet)</h2>
+        <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">Why there are no recurring tasks or insights (yet)</h2>
         <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
-          <p>Ima does not currently support recurring tasks.</p>
           <p>Repeating tasks often outlive their importance simply because they repeat.</p>
           <p>Ima avoids creating obligations that persist without being re-considered.</p>
           <p>Recurring tasks will only be added if they can exist without:</p>
           <ul className="space-y-1"><li>– stacking missed instances</li><li>– creating invisible pressure</li><li>– extending attention by default</li></ul>
           <p>When they arrive, they will still obey the same rule:<br />each instance must earn its time.</p>
+          <p>
+            Ima also avoids deep insights or analytics.
+          </p>
+          <p>
+            Beyond simple counters, the app does not interpret behaviour or suggest patterns.
+          </p>
+          <p>
+            Insight systems often turn attention into performance.
+          </p>
+          <p>Counters are kept because they are emotionally ambient and non-prescriptive. <br />And the goal is clarity, not optimisation.</p>
         </div>
       </section>
 

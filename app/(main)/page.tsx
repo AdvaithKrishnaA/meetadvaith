@@ -349,23 +349,23 @@ export default function Personal() {
               data-cal-config='{"layout":"month_view"}'
               className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
             >
-            here.
-            </button>
+            here
+            </button>.
           </p>
         </div>
         <h3 className="mt-6 mb-3 text-lg font-medium">More about me</h3>
         <ul className="space-y-2 text-zinc-600 dark:text-zinc-400">
           <li className="flex gap-2">
             <span className="text-zinc-400 dark:text-zinc-500">•</span>
-            <span>Graduated from IIT Guwahati (Class of '24).</span>
+            <span>Graduated from IIT Guwahati (Class of '24)</span>
           </li>
           <li className="flex gap-2">
             <span className="text-zinc-400 dark:text-zinc-500">•</span>
-            <span>Working at Media.net, focusing on ML/AI Products for Ad-Tech.</span>
+            <span>Building AI/ML Products for Ad-Tech at Media.net</span>
           </li>
           <li className="flex gap-2">
             <span className="text-zinc-400 dark:text-zinc-500">•</span>
-            <span>Currently based in Mumbai; grew up in Kottayam and Alleppey, Kerala.</span>
+            <span>Currently based in Mumbai; grew up in Kerala</span>
           </li>
           <li className="flex gap-2">
             <span className="text-zinc-400 dark:text-zinc-500">•</span>
