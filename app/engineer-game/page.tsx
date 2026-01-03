@@ -121,7 +121,7 @@ interface GameState {
 const PIXEL_SIZE = 5
 const PLAYER_SIZE = 8 * PIXEL_SIZE
 const ITEM_SIZE = 8 * PIXEL_SIZE
-const GRAVITY = 0.4
+const GRAVITY = 0.6
 const JUMP_FORCE = -12
 const BASE_SPEED = 5
 const GROUND_HEIGHT = 60
