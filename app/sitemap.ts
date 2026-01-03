@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${WEBSITE_URL}/techrunner`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${WEBSITE_URL}/blog/anchored-down-psychology-of-coupon-use`,
       lastModified: new Date(),
       changeFrequency: 'yearly',

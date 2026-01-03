@@ -46,6 +46,13 @@ export const PROJECTS: Project[] = [
     id: 'project0',
   },
   {
+    name: 'Engineer #099',
+    description: 'A pixel-style endless runner game but for corporate engineers',
+    link: '/engineer-game',
+    image: '/engineer-game.png',
+    id: 'project3',
+  },
+  {
     name: 'Case Portfolio',
     description: '(Request Access) Some of my best work',
     image: '/casestudies.png',
