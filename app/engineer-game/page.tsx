@@ -623,12 +623,9 @@ export default function TechRunnerPage() {
     <div className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col items-center py-4 px-4">
       {/* Header */}
       <div className="mb-4 text-center">
-        <h1 className="text-lg md:text-xl font-bold text-zinc-900 dark:text-zinc-100 font-mono">
+        <h1 className="mb-8 text-lg md:text-xl font-bold text-zinc-900 dark:text-zinc-100 font-mono">
           ▓▒░ ENGINEER #099 ░▒▓
         </h1>
-        <p className="text-xs text-zinc-600 dark:text-zinc-400 font-mono">
-          TAP / SPACE to jump
-        </p>
       </div>
 
       {/* Control Buttons */}
@@ -638,13 +635,13 @@ export default function TechRunnerPage() {
             onClick={() => setGameState(prev => ({ ...prev, paused: !prev.paused }))}
             className="px-3 py-1 bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-mono text-xs hover:bg-zinc-300 dark:hover:bg-zinc-600 transition-colors"
           >
-            {gameState.paused ? 'RESUME' : 'PAUSE'}
+            {gameState.paused ? 'RESUME (P)' : 'PAUSE (P)'}
           </button>
           <button
             onClick={resetGame}
             className="px-3 py-1 bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-mono text-xs hover:bg-zinc-300 dark:hover:bg-zinc-600 transition-colors"
           >
-            RESTART
+            RESTART (R)
           </button>
         </div>
       )}
@@ -699,7 +696,7 @@ export default function TechRunnerPage() {
 
             <button
               onClick={startGame}
-              className="px-5 py-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-mono font-bold text-xs hover:bg-zinc-700 dark:hover:bg-zinc-300 transition-colors"
+              className="mt-8 px-5 py-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-mono font-bold text-xs hover:bg-zinc-700 dark:hover:bg-zinc-300 transition-colors"
             >
               START GAME
             </button>
