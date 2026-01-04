@@ -102,7 +102,7 @@ export default function ImaPage() {
       </section>
 
       <section>
-        <img src="/ima-preview.png" alt="ima app preview" className="w-100 rounded-xl" />
+        <img src="/ima-preview.webp" alt="ima app preview" className="w-100 rounded-xl" />
       </section>
 
       <section className="space-y-4">

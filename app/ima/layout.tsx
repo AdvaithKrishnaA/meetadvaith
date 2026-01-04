@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: 'Ima',
     images: [
       {
-        url: 'https://meetadvaith.com/og-image.png',
+        url: 'https://meetadvaith.com/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Ima — Manage Tasks that Matter',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: 'Ima — Manage Tasks that Matter',
     description:
       'A quiet macOS task app where tasks exist briefly and fade away when time ends.',
-    images: ['https://meetadvaith.com/og-image.png'],
+    images: ['https://meetadvaith.com/og-image.webp'],
   },
 
   robots: {

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: 'Engineer #99 Game',
     images: [
       {
-        url: 'https://meetadvaith.com/engineer-game.png',
+        url: 'https://meetadvaith.com/engineer-game.webp',
         width: 1200,
         height: 630,
         alt: 'Engineer #99 Game',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: 'Engineer #99 Game',
     description:
       'A pixel-style endless runner game but for engineers surviving in tech. Dodge meetings and bugs while collecting salary and promotions.',
-    images: ['https://meetadvaith.com/engineer-game.png'],
+    images: ['https://meetadvaith.com/engineer-game.webp'],
   },
 
   robots: {
