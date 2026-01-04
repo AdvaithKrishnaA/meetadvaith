@@ -47,7 +47,7 @@ export const PROJECTS: Project[] = [
   },
   {
     name: 'Engineer #099',
-    description: 'A pixel-style endless runner game but for corporate engineers',
+    description: 'A pixel-style endless runner game but for engineers in tech',
     link: '/engineer-game',
     image: '/engineer-game.webp',
     id: 'project3',

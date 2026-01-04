@@ -44,7 +44,7 @@ const PIXEL_PATTERNS = {
     [0,0,1,0,0,1,0,0],
     [0,1,0,0,0,0,1,0],
   ],
-  salary: [
+  pay: [
   [0,0,1,1,1,0,0,0],
   [0,1,1,0,0,1,1,0],
   [0,1,1,0,0,0,0,0],
@@ -54,7 +54,7 @@ const PIXEL_PATTERNS = {
   [0,0,1,1,1,0,0,0],
   [0,0,0,1,1,0,0,0],
 ],
-  promotion: [
+  levelup: [
     [0,0,0,1,1,0,0,0],
     [0,0,1,1,1,1,0,0],
     [0,1,1,1,1,1,1,0],
@@ -89,7 +89,7 @@ interface Obstacle extends GameObject {
 }
 
 interface Pickup extends GameObject {
-  type: 'salary' | 'promotion' | 'skill'
+  type: 'pay' | 'levelup' | 'skill'
 }
 
 interface Player extends GameObject {
@@ -103,7 +103,7 @@ interface GameState {
   obstacles: Obstacle[]
   pickups: Pickup[]
   score: number
-  salary: number
+  pay: number
   level: number
   baseSpeed: number
   burnout: number
@@ -148,7 +148,7 @@ export default function TechRunnerPage() {
     obstacles: [],
     pickups: [],
     score: 0,
-    salary: 0,
+    pay: 0,
     level: 1,
     baseSpeed: BASE_SPEED,
     burnout: 0,
@@ -196,7 +196,7 @@ export default function TechRunnerPage() {
       obstacles: [],
       pickups: [],
       score: 0,
-      salary: 0,
+      pay: 0,
       level: 1,
       baseSpeed: BASE_SPEED,
       burnout: 0,
@@ -232,13 +232,13 @@ export default function TechRunnerPage() {
 
   const spawnPickup = useCallback((): Pickup => {
     const rand = Math.random()
-    let type: 'salary' | 'promotion' | 'skill'
+    let type: 'pay' | 'levelup' | 'skill'
     if (rand < 0.85) {
-      type = 'salary'
+      type = 'pay'
     } else if (rand < 0.95) {
       type = 'skill'
     } else {
-      type = 'promotion'
+      type = 'levelup'
     }
     
     const minHeight = CANVAS_HEIGHT - GROUND_HEIGHT - ITEM_SIZE - 100
@@ -339,7 +339,7 @@ export default function TechRunnerPage() {
             if (obstacle.type === 'meeting') {
               newState.burnout += 20
             } else if (obstacle.type === 'bug') {
-              newState.salary = Math.max(0, newState.salary - 50)
+              newState.pay = Math.max(0, newState.pay - 20*newState.level)
               newState.burnout += 25
             }
             
@@ -360,13 +360,13 @@ export default function TechRunnerPage() {
           const multiplier = Math.floor(newState.streak / 10) + 1
           
           switch (pickup.type) {
-            case 'salary':
-              newState.salary += 20 * multiplier
-              newState.score += 10 * multiplier
+            case 'pay':
+              newState.pay += 100 * multiplier * newState.level
+              newState.score += 50 * multiplier
               break
-            case 'promotion':
+            case 'levelup':
               newState.level += 1
-              newState.salary += 100
+              newState.pay += 100
               newState.score += 50
               break
             case 'skill':
@@ -390,7 +390,7 @@ export default function TechRunnerPage() {
       newState.monthTimer += 1
       
       if (newState.monthTimer >= 180) {
-        newState.salary += newState.level * 10
+        newState.pay += newState.level * 10
         newState.monthTimer = 0
       }
 
@@ -479,7 +479,7 @@ export default function TechRunnerPage() {
       ctx.fillStyle = fgColor
       ctx.font = 'bold 14px monospace'
       ctx.fillText(`SCORE: ${gameState.score}`, 20, 25)
-      ctx.fillText(`SALARY: $${gameState.salary}`, 20, 45)
+      ctx.fillText(`PAY: $${gameState.pay}`, 20, 45)
       ctx.fillText(`LEVEL: ${gameState.level}`, 160, 25)
       ctx.fillText(`STREAK: ${gameState.streak}x`, 160, 45)
       
@@ -514,7 +514,7 @@ export default function TechRunnerPage() {
       ctx.fillText('BURNOUT!', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 - 50)
       
       ctx.font = '18px monospace'
-      ctx.fillText(`SCORE: ${gameState.score}  |  SALARY: $${gameState.salary}  |  LEVEL: ${gameState.level}`, CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2)
+      ctx.fillText(`SCORE: ${gameState.score}  |  PAY: $${gameState.pay}  |  LEVEL: ${gameState.level}`, CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2)
       
       ctx.font = '14px monospace'
       ctx.fillText('TAP OR PRESS [R] TO RESTART', CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 50)
@@ -666,12 +666,12 @@ export default function TechRunnerPage() {
                 <div className="font-bold mb-1 text-zinc-900 dark:text-zinc-100 text-[10px]">✓ REWARDS</div>
                 <div className="space-y-1 text-zinc-700 dark:text-zinc-300 text-[10px]">
                   <div className="flex items-center gap-1">
-                    <PixelIcon pattern={PIXEL_PATTERNS.salary} size={20} />
-                    <span>SALARY</span>
+                    <PixelIcon pattern={PIXEL_PATTERNS.pay} size={20} />
+                    <span>PAY</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <PixelIcon pattern={PIXEL_PATTERNS.promotion} size={20} />
-                    <span>PROMOTION</span>
+                    <PixelIcon pattern={PIXEL_PATTERNS.levelup} size={20} />
+                    <span>LEVEL-UP</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <PixelIcon pattern={PIXEL_PATTERNS.skill} size={20} />
@@ -715,12 +715,12 @@ export default function TechRunnerPage() {
               <div className="font-bold mb-1 text-zinc-900 dark:text-zinc-100">✓ REWARDS</div>
               <div className="space-y-0.5 text-zinc-700 dark:text-zinc-300">
                 <div className="flex items-center gap-1">
-                  <PixelIcon pattern={PIXEL_PATTERNS.salary} size={16} />
-                  <span>SALARY</span>
+                  <PixelIcon pattern={PIXEL_PATTERNS.pay} size={16} />
+                  <span>PAY</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <PixelIcon pattern={PIXEL_PATTERNS.promotion} size={16} />
-                  <span>PROMOTION</span>
+                  <PixelIcon pattern={PIXEL_PATTERNS.levelup} size={16} />
+                  <span>LEVEL-UP</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <PixelIcon pattern={PIXEL_PATTERNS.skill} size={16} />
