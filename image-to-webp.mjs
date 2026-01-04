@@ -6,7 +6,7 @@ import sharp from "sharp";
  * CONFIG
  */
 const IMAGE_EXTS = [".png", ".jpg", ".jpeg"];
-const TEXT_EXTS = [".html", ".js", ".ts", ".jsx", ".tsx", ".css", ".md"];
+const TEXT_EXTS = [".html", ".js", ".ts", ".jsx", ".tsx", ".css", ".md", ".mdx"];
 
 /**
  * CLI ARGS
