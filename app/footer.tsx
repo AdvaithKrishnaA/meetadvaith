@@ -3,7 +3,6 @@ import { AnimatedBackground } from '@/components/ui/animated-background'
 import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
-import { WebsiteCarbonBadge } from 'react-websitecarbon-badge'
 import posthog from 'posthog-js'
 
 const THEMES_OPTIONS = [
@@ -81,7 +80,6 @@ export function Footer() {
           <ThemeSwitch />
         </div>
       </div>
-      <WebsiteCarbonBadge url = "meetadvaith.com" />
     </footer>
   )
 }
