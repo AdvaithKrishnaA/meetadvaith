@@ -8,15 +8,6 @@ type Project = {
   id: string
 }
 
-type WorkExperience = {
-  company: string
-  title: string
-  start: string
-  end: string
-  link: string
-  id: string
-}
-
 type BlogPost = {
   title: string
   description: string
@@ -58,25 +49,6 @@ export const PROJECTS: Project[] = [
     image: '/casestudies.webp',
     showForm: true,
     id: 'project2',
-  },
-]
-
-export const WORK_EXPERIENCE: WorkExperience[] = [
-  {
-    company: 'Media.net',
-    title: 'Senior Product Analyst, ML Team',
-    start: 'Jul 2024',
-    end: 'Present',
-    link: 'https://www.linkedin.com/in/advaithkrishnaa/',
-    id: 'work1',
-  },
-  {
-    company: 'MarianaAI',
-    title: 'Founder\'s Associate',
-    start: 'Oct 2023',
-    end: 'Jul 2024',
-    link: 'https://www.linkedin.com/in/advaithkrishnaa/',
-    id: 'work2',
   },
 ]
 
