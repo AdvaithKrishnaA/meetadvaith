@@ -18,34 +18,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${WEBSITE_URL}/techrunner`,
+      url: `${WEBSITE_URL}/engineer-game`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
     },
     {
-      url: `${WEBSITE_URL}/blog/anchored-down-psychology-of-coupon-use`,
+      url: `${WEBSITE_URL}/blog/the-psychology-of-coupon-use`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
-      priority: 0.6,
+      priority: 0.7,
     },
     {
       url: `${WEBSITE_URL}/blog/bad-arguments-and-bogus-logic-navigating-logical-fallacies`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
-      priority: 0.6,
+      priority: 0.7,
     },
     {
-      url: `${WEBSITE_URL}/blog/behavioral-economics-of-love`,
+      url: `${WEBSITE_URL}/blog/the-behavioral-economics-of-love`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
-      priority: 0.6,
-    },
-    {
-      url: `${WEBSITE_URL}/blog/example-mdx-metadata`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.6,
+      priority: 0.7,
     },
   ]
 }

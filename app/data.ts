@@ -84,20 +84,26 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'The Behavioral Economics of Love',
     description: 'Spoiler: our choices in love aren\'t always rational!',
-    link: '/blog/behavioral-economics-of-love',
+    link: '/blog/the-behavioral-economics-of-love',
     uid: 'blog-1',
+  },
+  {
+    title: 'The Behavioral Economics of Holiday Decision Making',
+    description: 'Everything from gift waste to secret-santas to sale-induced overspending.',
+    link: '/blog/the-behavioral-economics-of-christmas',
+    uid: 'blog-2',
   },
   {
     title: 'Anchored Down: Psychology of Coupon Use',
     description: 'The psychology behind why coupons hook us runs deeper than saving money.',
-    link: '/blog/anchored-down-psychology-of-coupon-use',
-    uid: 'blog-2',
+    link: '/blog/the-psychology-of-coupon-use',
+    uid: 'blog-3',
   },
   {
     title: 'Bad Arguments and Bogus Logic: Navigating Logical Fallacies',
     description: 'Understanding common logical fallacies and how they shape our reasoning and decision-making.',
     link: '/blog/bad-arguments-and-bogus-logic-navigating-logical-fallacies',
-    uid: 'blog-3',
+    uid: 'blog-4',
   },
 ]
 
@@ -106,10 +112,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Calendar',
     link: 'https://cal.com/meetadvaith/secret',
   },
-  // {
-  //   label: 'X',
-  //   link: 'https://twitter.com/advaithkrishnaa',
-  // },
   {
     label: 'LinkedIn',
     link: 'https://www.linkedin.com/in/advaithkrishnaa',
