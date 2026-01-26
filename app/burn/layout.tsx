@@ -18,7 +18,7 @@ export const metadata: Metadata = {
                 url: 'https://meetadvaith.com/burn.webp',
                 width: 1200,
                 height: 630,
-                alt: 'Burn',
+                alt: 'Burn | A Simple Way to Release Negative Thoughts',
             },
         ],
         type: 'website',

@@ -1,39 +1,40 @@
 'use client'
 
 import {
-    AlertDialog,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
-import { HelpCircle } from "lucide-react"
+    MorphingDialog,
+    MorphingDialogTrigger,
+    MorphingDialogContent,
+    MorphingDialogClose,
+    MorphingDialogContainer,
+    MorphingDialogTitle,
+    MorphingDialogDescription,
+} from "@/components/ui/morphing-dialog"
+import { HelpCircle, XIcon } from "lucide-react"
 
 export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerText: string, iconTrigger?: boolean }) {
     return (
-        <AlertDialog>
-            <AlertDialogTrigger asChild>
-                {iconTrigger ? (
-                    <button className="flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors mb-2">
-                        <HelpCircle className="w-3 h-3" />
-                        {triggerText}
-                    </button>
-                ) : (
-                    <Button className="mt-4">
-                        {triggerText}
-                    </Button>
-                )}
-            </AlertDialogTrigger>
-            <AlertDialogContent className="max-w-md max-h-[80vh] overflow-y-auto">
-                <AlertDialogHeader>
-                    <AlertDialogTitle className="text-xl">What is Burn?</AlertDialogTitle>
-                    <AlertDialogDescription className="space-y-4 text-base pt-2">
+        <MorphingDialog>
+            {iconTrigger ? (
+                <MorphingDialogTrigger className="flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors mb-2">
+                    <HelpCircle className="w-3 h-3" />
+                    {triggerText}
+                </MorphingDialogTrigger>
+            ) : (
+                <MorphingDialogTrigger className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 mt-4">
+                    {triggerText}
+                </MorphingDialogTrigger>
+            )}
+
+            <MorphingDialogContainer>
+                <MorphingDialogContent className="relative mx-4 max-w-md bg-white p-6 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-xl">
+                    <MorphingDialogTitle className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+                        What is Burn?
+                    </MorphingDialogTitle>
+                    <MorphingDialogDescription
+                        className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400"
+                    >
                         <div>
-                            <strong className="text-zinc-900 dark:text-zinc-100">
+                            <strong className="text-zinc-900 dark:text-zinc-100 font-medium">
                                 Burn is a place for your negative thoughts to go…
                             </strong>
                             <br />
@@ -41,7 +42,7 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
                         </div>
 
                         <div className="space-y-1">
-                            <strong className="text-zinc-900 dark:text-zinc-100">
+                            <strong className="text-zinc-900 dark:text-zinc-100 font-medium">
                                 How does it work?
                             </strong>
                             <ul className="list-disc pl-4 space-y-1">
@@ -52,7 +53,7 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
                         </div>
 
                         <div className="space-y-1">
-                            <strong className="text-zinc-900 dark:text-zinc-100">
+                            <strong className="text-zinc-900 dark:text-zinc-100 font-medium">
                                 What if it feels a little silly?
                             </strong>
                             <div>
@@ -61,7 +62,7 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
                         </div>
 
                         <div className="space-y-1">
-                            <strong className="text-zinc-900 dark:text-zinc-100">
+                            <strong className="text-zinc-900 dark:text-zinc-100 font-medium">
                                 Why would I use this?
                             </strong>
                             <div>
@@ -70,12 +71,20 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
                                 Burning them is faster.
                             </div>
                         </div>
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                    <AlertDialogCancel className="w-full sm:w-auto">Got it</AlertDialogCancel>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
+                    </MorphingDialogDescription>
+
+                    <div className="mt-6 flex justify-end">
+                        <MorphingDialogClose className="relative static bg-zinc-900 dark:bg-zinc-100 text-white dark:text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors">
+                            Got it
+                        </MorphingDialogClose>
+                    </div>
+
+                    <MorphingDialogClose className="absolute right-4 top-4 p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+                        <XIcon className="h-4 w-4" />
+                    </MorphingDialogClose>
+                </MorphingDialogContent>
+            </MorphingDialogContainer>
+        </MorphingDialog>
     )
 }
+

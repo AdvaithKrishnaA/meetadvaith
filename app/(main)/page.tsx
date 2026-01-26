@@ -186,7 +186,7 @@ function ProjectMedia({
                 <img
                   src={image}
                   alt="Project preview"
-                  className="aspect-video h-[50vh] w-full rounded-xl object-cover md:h-[60vh]"
+                  className="aspect-video max-h-[50vh] w-full rounded-xl object-contain md:h-[60vh]"
                 />
               )}
             </div>
