@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useCallback } from 'react'
+import posthog from 'posthog-js'
 
 // Pixel art patterns (8x8 grids, 1 = black, 0 = transparent)
 const PIXEL_PATTERNS = {
@@ -182,6 +183,9 @@ export default function TechRunnerPage() {
   const groundY = CANVAS_HEIGHT - GROUND_HEIGHT - PLAYER_SIZE
 
   const startGame = useCallback(() => {
+    posthog.capture('game_started', {
+      game_name: 'Engineer #099',
+    })
     setGameState({
       player: {
         x: 80,
@@ -618,6 +622,19 @@ export default function TechRunnerPage() {
       }))
     }
   }, [dimensions.height, groundY])
+
+  // Track game over event for analytics
+  useEffect(() => {
+    if (gameState.gameOver && gameState.started) {
+      posthog.capture('game_over', {
+        game_name: 'Engineer #099',
+        final_score: gameState.score,
+        final_pay: gameState.pay,
+        final_level: gameState.level,
+        max_streak: gameState.streak,
+      })
+    }
+  }, [gameState.gameOver, gameState.started, gameState.score, gameState.pay, gameState.level, gameState.streak])
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col items-center py-4 px-4">

@@ -48,5 +48,25 @@
     "event_name": "case_study_access_requested",
     "event_description": "User interacted with the Tally form to request case study access - lead generation event",
     "file_path": "app/(main)/page.tsx"
+  },
+  {
+    "event_name": "game_started",
+    "event_description": "User started a new Engineer #099 game session",
+    "file_path": "app/engineer-game/page.tsx"
+  },
+  {
+    "event_name": "game_over",
+    "event_description": "User finished a game session with final score, pay, and level stats",
+    "file_path": "app/engineer-game/page.tsx"
+  },
+  {
+    "event_name": "burn_thought_submitted",
+    "event_description": "User submitted a thought to be burned - core engagement event",
+    "file_path": "app/burn/page.tsx"
+  },
+  {
+    "event_name": "burn_onboarding_completed",
+    "event_description": "User completed the Burn app onboarding sequence",
+    "file_path": "app/burn/page.tsx"
   }
 ]

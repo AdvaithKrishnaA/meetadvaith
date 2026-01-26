@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Flame } from 'lucide-react'
+import posthog from 'posthog-js'
 
 function BurnLogo({ className }: { className?: string }) {
     return (
@@ -56,12 +57,16 @@ export default function BurnPage() {
         const exit = setTimeout(() => {
             setPhase('app')
             localStorage.setItem('burn_has_visited', 'true')
+            posthog.capture('burn_onboarding_completed')
         }, 500)
         return () => clearTimeout(exit)
     }, [loadingPhase, phase])
 
     const handleBurn = () => {
         if (!text.trim()) return
+        posthog.capture('burn_thought_submitted', {
+            thought_length: text.trim().length,
+        })
         setIsBurning(true)
         setTimeout(() => {
             setIsBurning(false)
