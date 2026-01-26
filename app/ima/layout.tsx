@@ -4,12 +4,14 @@ import { Footer } from '../footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Ima — Manage Tasks that Matter',
+  title: {
+    absolute: 'Ima | Manage Tasks that Matter',
+  },
   description:
     'Tasks that fade away when their time ends. A minimal macOS app for attention, not backlog.',
 
   openGraph: {
-    title: 'Ima — Manage Tasks that Matter',
+    title: 'Ima | Manage Tasks that Matter',
     description:
       'Tasks that fade away when their time ends. A minimal macOS app for attention, not backlog.',
     url: 'https://meetadvaith.com/ima',
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Ima — Manage Tasks that Matter',
+    title: 'Ima | Manage Tasks that Matter',
     description:
       'A quiet macOS task app where tasks exist briefly and fade away when time ends.',
     images: ['https://meetadvaith.com/og-image.webp'],

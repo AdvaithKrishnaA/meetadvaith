@@ -30,6 +30,13 @@ export const PROJECTS: Project[] = [
     id: 'project1',
   },
   {
+    name: 'Burn',
+    description: 'Burn helps you release negative thoughts - write them down, watch them disappear, and get back to better vibes.',
+    link: '/burn',
+    image: '/burn.svg',
+    id: 'project-burn',
+  },
+  {
     name: 'Ima',
     description: 'A quiet macOS menu bar app where tasks exist only for the time you decide they deserve',
     link: '/ima',

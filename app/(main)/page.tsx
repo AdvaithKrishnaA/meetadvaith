@@ -46,7 +46,7 @@ function TallyForm() {
   useEffect(() => {
     const loadTally = () => {
       if (typeof window !== 'undefined' && (window as any).Tally) {
-        ;(window as any).Tally.loadEmbeds()
+        ; (window as any).Tally.loadEmbeds()
       } else {
         const iframes = document.querySelectorAll(
           'iframe[data-tally-src]:not([src])'
@@ -126,32 +126,29 @@ function ProjectMedia({
             <img
               src={image}
               alt="Project preview"
-              className="aspect-video w-full cursor-zoom-in rounded-xl object-cover grayscale transition-all duration-300 md:group-hover:grayscale-0"
+              className="aspect-video w-full cursor-zoom-in rounded-xl object-cover transition-all duration-300 md:group-hover:grayscale-0"
             />
           </div>
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
           <MorphingDialogContent className="relative max-w-4xl">
             <div
-              className={`flex flex-col gap-4 rounded-2xl p-4 ring-1 ring-inset ${
-                showForm
-                  ? 'bg-white ring-zinc-200/50'
-                  : 'bg-zinc-50 ring-zinc-200/50 dark:bg-zinc-950 dark:ring-zinc-800/50'
-              }`}
+              className={`flex flex-col gap-4 rounded-2xl p-4 ring-1 ring-inset ${showForm
+                ? 'bg-white ring-zinc-200/50'
+                : 'bg-zinc-50 ring-zinc-200/50 dark:bg-zinc-950 dark:ring-zinc-800/50'
+                }`}
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <h3
-                    className={`text-lg font-medium ${
-                      showForm ? 'text-zinc-900' : 'text-zinc-900 dark:text-zinc-50'
-                    }`}
+                    className={`text-lg font-medium ${showForm ? 'text-zinc-900' : 'text-zinc-900 dark:text-zinc-50'
+                      }`}
                   >
                     {name}
                   </h3>
                   <p
-                    className={`text-sm ${
-                      showForm ? 'text-zinc-600' : 'text-zinc-600 dark:text-zinc-400'
-                    }`}
+                    className={`text-sm ${showForm ? 'text-zinc-600' : 'text-zinc-600 dark:text-zinc-400'
+                      }`}
                   >
                     {description}
                   </p>
@@ -345,7 +342,7 @@ function MagneticSocialLink({
 
 export default function Personal() {
   useEffect(() => {
-    ;(async function () {
+    ; (async function () {
       const cal = await getCalApi({ namespace: 'secret' })
       cal('ui', { hideEventTypeDetails: false, layout: 'month_view' })
     })()
@@ -370,7 +367,7 @@ export default function Personal() {
             </MagneticSocialLink>
           ))}
         </div>
-        
+
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
@@ -389,7 +386,7 @@ export default function Personal() {
               className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
               onClick={() => posthog.capture('calendar_booking_clicked', { calendar_link: 'meetadvaith/secret' })}
             >
-            here
+              here
             </button>.
           </p>
         </div>
