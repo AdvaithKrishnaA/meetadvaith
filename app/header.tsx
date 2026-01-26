@@ -74,7 +74,7 @@ export function Header() {
           href="#blog"
           className="text-black dark:text-white transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
         >
-          Blog
+          Writing
         </a>
       )}
     </header>
