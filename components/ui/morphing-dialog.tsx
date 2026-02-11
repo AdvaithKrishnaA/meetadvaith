@@ -89,6 +89,8 @@ export type MorphingDialogTriggerProps = {
   className?: string
   style?: React.CSSProperties
   triggerRef?: React.RefObject<HTMLDivElement>
+  onClick?: () => void
+  ariaLabel?: string
 }
 
 function MorphingDialogTrigger({
@@ -96,36 +98,40 @@ function MorphingDialogTrigger({
   className,
   style,
   triggerRef,
+  onClick,
+  ariaLabel,
 }: MorphingDialogTriggerProps) {
   const { setIsOpen, isOpen, uniqueId } = useMorphingDialog()
 
-  const handleClick = useCallback(() => {
+  const handleTrigger = useCallback(() => {
     setIsOpen(!isOpen)
-  }, [isOpen, setIsOpen])
+    onClick?.()
+  }, [isOpen, setIsOpen, onClick])
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault()
-        setIsOpen(!isOpen)
+        handleTrigger()
       }
     },
-    [isOpen, setIsOpen],
+    [handleTrigger],
   )
 
   return (
     <motion.div
       ref={triggerRef}
       layoutId={`dialog-${uniqueId}`}
-      className={cn('relative cursor-pointer', className)}
-      onClick={handleClick}
+      className={cn('relative cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-xl', className)}
+      onClick={handleTrigger}
       onKeyDown={handleKeyDown}
       style={style}
       role="button"
+      tabIndex={0}
       aria-haspopup="dialog"
       aria-expanded={isOpen}
       aria-controls={`motion-ui-morphing-dialog-content-${uniqueId}`}
-      aria-label={`Open dialog ${uniqueId}`}
+      aria-label={ariaLabel || `Open dialog ${uniqueId}`}
     >
       {children}
     </motion.div>
