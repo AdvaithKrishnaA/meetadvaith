@@ -121,14 +121,16 @@ function ProjectMedia({
           duration: 0.3,
         }}
       >
-        <MorphingDialogTrigger className="group">
-          <div onClick={handleProjectDetailsViewed}>
-            <img
-              src={image}
-              alt="Project preview"
-              className="aspect-video w-full cursor-zoom-in rounded-xl object-cover transition-all duration-300 md:group-hover:grayscale-0"
-            />
-          </div>
+        <MorphingDialogTrigger
+          className="group"
+          onClick={handleProjectDetailsViewed}
+          ariaLabel={`View details for ${name}`}
+        >
+          <img
+            src={image}
+            alt={`${name} preview`}
+            className="aspect-video w-full cursor-zoom-in rounded-xl object-cover transition-all duration-300 md:group-hover:grayscale-0"
+          />
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
           <MorphingDialogContent className="relative max-w-4xl">
@@ -185,7 +187,7 @@ function ProjectMedia({
               ) : (
                 <img
                   src={image}
-                  alt="Project preview"
+                  alt={`${name} preview`}
                   className="aspect-video max-h-[50vh] w-full rounded-xl object-contain md:h-[60vh]"
                 />
               )}
@@ -218,16 +220,18 @@ function ProjectMedia({
           duration: 0.3,
         }}
       >
-        <MorphingDialogTrigger className="group">
-          <div onClick={handleProjectDetailsViewed}>
-            <video
-              src={video}
-              autoPlay
-              loop
-              muted
-              className="aspect-video w-full cursor-zoom-in rounded-xl grayscale transition-all duration-300 md:group-hover:grayscale-0"
-            />
-          </div>
+        <MorphingDialogTrigger
+          className="group"
+          onClick={handleProjectDetailsViewed}
+          ariaLabel={`View details for ${name}`}
+        >
+          <video
+            src={video}
+            autoPlay
+            loop
+            muted
+            className="aspect-video w-full cursor-zoom-in rounded-xl grayscale transition-all duration-300 md:group-hover:grayscale-0"
+          />
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
           <MorphingDialogContent className="relative max-w-4xl">
