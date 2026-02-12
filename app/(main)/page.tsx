@@ -417,6 +417,7 @@ export default function Personal() {
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.5, opacity: 0 }}
                       transition={{ duration: 0.1 }}
+                      aria-live="polite"
                       className="inline-flex"
                     >
                       <CheckIcon className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
