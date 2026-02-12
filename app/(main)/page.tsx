@@ -396,41 +396,43 @@ export default function Personal() {
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
-            <span className="inline-flex items-center gap-1 group/email">
+            <span className="group inline-flex items-center gap-1">
               <a
                 href={`mailto:${EMAIL}`}
-                className="underline hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
                 onClick={() => posthog.capture('email_link_clicked', { email: EMAIL })}
               >
                 {EMAIL}
               </a>
               <button
                 onClick={handleCopy}
-                className="inline-flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 md:opacity-0 md:group-hover/email:opacity-100 focus-visible:opacity-100 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+                className="inline-flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 md:opacity-0 md:group-hover:opacity-100 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
                 aria-label={copied ? "Email copied" : "Copy email address"}
               >
                 <AnimatePresence mode="wait" initial={false}>
                   {copied ? (
-                    <motion.div
+                    <motion.span
                       key="check"
                       initial={{ scale: 0.5, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.5, opacity: 0 }}
                       transition={{ duration: 0.1 }}
                       aria-live="polite"
+                      className="inline-flex"
                     >
                       <CheckIcon className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
-                    </motion.div>
+                    </motion.span>
                   ) : (
-                    <motion.div
+                    <motion.span
                       key="copy"
                       initial={{ scale: 0.5, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.5, opacity: 0 }}
                       transition={{ duration: 0.1 }}
+                      className="inline-flex"
                     >
                       <CopyIcon className="h-3.5 w-3.5" />
-                    </motion.div>
+                    </motion.span>
                   )}
                 </AnimatePresence>
               </button>
