@@ -396,7 +396,7 @@ export default function Personal() {
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
-            <span className="group inline-flex items-center gap-1">
+            <span className="group/email inline-flex items-center gap-1">
               <a
                 href={`mailto:${EMAIL}`}
                 className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -406,8 +406,8 @@ export default function Personal() {
               </a>
               <button
                 onClick={handleCopy}
-                className="inline-flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 md:opacity-0 md:group-hover:opacity-100 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
-                aria-label={copied ? "Email copied" : "Copy email address"}
+                className="inline-flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 md:opacity-0 md:group-hover/email:opacity-100 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+                aria-label={copied ? 'Email copied' : 'Copy email address'}
               >
                 <AnimatePresence mode="wait" initial={false}>
                   {copied ? (
@@ -417,7 +417,6 @@ export default function Personal() {
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.5, opacity: 0 }}
                       transition={{ duration: 0.1 }}
-                      aria-live="polite"
                       className="inline-flex"
                     >
                       <CheckIcon className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
