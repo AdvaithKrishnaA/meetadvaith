@@ -396,7 +396,7 @@ export default function Personal() {
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
-            <span className="group/email inline-flex items-center gap-1">
+            <span className="group/email inline-flex items-center">
               <a
                 href={`mailto:${EMAIL}`}
                 className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
@@ -437,15 +437,16 @@ export default function Personal() {
                 </AnimatePresence>
               </button>
             </span>
-            {' '}or block my calendar{' '}
+            {' '}or{' '}
             <button
               data-cal-namespace="secret"
               data-cal-link="meetadvaith/secret"
               data-cal-config='{"layout":"month_view"}'
               className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
               onClick={() => posthog.capture('calendar_booking_clicked', { calendar_link: 'meetadvaith/secret' })}
+              aria-label="Book a meeting on my calendar"
             >
-              here
+              block my calendar
             </button>.
           </p>
         </div>
@@ -494,6 +495,7 @@ export default function Personal() {
                     className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
                     href={project.link}
                     target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => posthog.capture('project_clicked', { project_name: project.name, project_link: project.link })}
                   >
                     {project.name}

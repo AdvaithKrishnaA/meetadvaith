@@ -13,9 +13,12 @@ function CopyButton() {
   const currentUrl = typeof window !== 'undefined' ? window.location.href : ''
 
   useEffect(() => {
-    setTimeout(() => {
-      setText('Copy')
-    }, 2000)
+    if (text === 'Copied') {
+      const timer = setTimeout(() => {
+        setText('Copy')
+      }, 2000)
+      return () => clearTimeout(timer)
+    }
   }, [text])
 
   const handleCopy = () => {
@@ -32,6 +35,7 @@ function CopyButton() {
       onClick={handleCopy}
       className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors dark:text-zinc-400"
       type="button"
+      aria-label={text === 'Copied' ? 'URL copied' : 'Copy page URL'}
     >
       <TextMorph>{text}</TextMorph>
       <span>URL</span>
