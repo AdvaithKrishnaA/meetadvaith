@@ -37,7 +37,7 @@ function CopyButton() {
       type="button"
       aria-label={text === 'Copied' ? 'URL copied' : 'Copy page URL'}
     >
-      <TextMorph aria-live="polite">{text}</TextMorph>
+      <TextMorph>{text}</TextMorph>
       <span>URL</span>
     </button>
   )
