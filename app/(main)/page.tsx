@@ -395,8 +395,8 @@ export default function Personal() {
 
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{''}
-            <span className="group/email inline-flex items-center gap-1">
+            Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
+            <span className="group/email inline-flex items-center">
               <a
                 href={`mailto:${EMAIL}`}
                 className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
