@@ -406,7 +406,7 @@ export default function Personal() {
               </a>
               <button
                 onClick={handleCopy}
-                className="inline-flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 md:opacity-0 md:group-hover/email:opacity-100 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+                className="inline-flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
                 aria-label={copied ? 'Email copied' : 'Copy email address'}
               >
                 <AnimatePresence mode="wait" initial={false}>
