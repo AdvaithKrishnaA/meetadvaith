@@ -437,15 +437,16 @@ export default function Personal() {
                 </AnimatePresence>
               </button>
             </span>
-            {' '}or block my calendar{' '}
+            {' '}or{' '}
             <button
               data-cal-namespace="secret"
               data-cal-link="meetadvaith/secret"
               data-cal-config='{"layout":"month_view"}'
               className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
               onClick={() => posthog.capture('calendar_booking_clicked', { calendar_link: 'meetadvaith/secret' })}
+              aria-label="Book a meeting on my calendar"
             >
-              here
+              block my calendar
             </button>.
           </p>
         </div>
@@ -494,6 +495,7 @@ export default function Personal() {
                     className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
                     href={project.link}
                     target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => posthog.capture('project_clicked', { project_name: project.name, project_link: project.link })}
                   >
                     {project.name}
