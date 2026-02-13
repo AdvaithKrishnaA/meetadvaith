@@ -1,6 +1,6 @@
 'use client'
-import { motion } from 'motion/react'
-import { XIcon } from 'lucide-react'
+import { motion, AnimatePresence } from 'motion/react'
+import { XIcon, CheckIcon, CopyIcon } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
 import {
   MorphingDialog,
@@ -17,7 +17,7 @@ import {
   EMAIL,
   SOCIAL_LINKS,
 } from '../data'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getCalApi } from '@calcom/embed-react'
 import posthog from 'posthog-js'
 
@@ -162,6 +162,7 @@ function ProjectMedia({
                     rel="noopener noreferrer"
                     onClick={handleProjectLinkClick}
                     className="flex shrink-0 items-center gap-1 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+                    aria-label={`Visit ${name} (opens in new tab)`}
                   >
                     Visit
                     <svg
@@ -171,6 +172,7 @@ function ProjectMedia({
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-3 w-3"
+                      aria-hidden="true"
                     >
                       <path
                         d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
@@ -251,6 +253,7 @@ function ProjectMedia({
                   rel="noopener noreferrer"
                   onClick={handleProjectLinkClick}
                   className="flex shrink-0 items-center gap-1 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+                  aria-label={`Visit ${name} (opens in new tab)`}
                 >
                   Visit
                   <svg
@@ -260,6 +263,7 @@ function ProjectMedia({
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-3 w-3"
+                    aria-hidden="true"
                   >
                     <path
                       d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
@@ -322,6 +326,9 @@ function MagneticSocialLink({
         href={link}
         onClick={handleClick}
         className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        aria-label={`Visit my ${label} profile (opens in new tab)`}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {children}
         <svg
@@ -331,6 +338,7 @@ function MagneticSocialLink({
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="h-3 w-3"
+          aria-hidden="true"
         >
           <path
             d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
@@ -345,6 +353,19 @@ function MagneticSocialLink({
 }
 
 export default function Personal() {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+      posthog.capture('email_copied', { email: EMAIL })
+    } catch (err) {
+      console.error('Failed to copy!', err)
+    }
+  }
+
   useEffect(() => {
     ; (async function () {
       const cal = await getCalApi({ namespace: 'secret' })
@@ -375,13 +396,47 @@ export default function Personal() {
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
-            <a
-              href="mailto:meetadvaith@duck.com"
-              className="underline hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-              onClick={() => posthog.capture('email_link_clicked', { email: 'meetadvaith@duck.com' })}
-            >
-              meetadvaith@duck.com
-            </a>
+            <span className="group/email inline-flex items-center gap-1">
+              <a
+                href={`mailto:${EMAIL}`}
+                className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+                onClick={() => posthog.capture('email_link_clicked', { email: EMAIL })}
+              >
+                {EMAIL}
+              </a>
+              <button
+                onClick={handleCopy}
+                className="inline-flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+                aria-label={copied ? 'Email copied' : 'Copy email address'}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {copied ? (
+                    <motion.span
+                      key="check"
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.5, opacity: 0 }}
+                      transition={{ duration: 0.1 }}
+                      aria-live="polite"
+                      className="inline-flex"
+                    >
+                      <CheckIcon className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="copy"
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.5, opacity: 0 }}
+                      transition={{ duration: 0.1 }}
+                      className="inline-flex"
+                    >
+                      <CopyIcon className="h-3.5 w-3.5" />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </button>
+            </span>
             {' '}or block my calendar{' '}
             <button
               data-cal-namespace="secret"
