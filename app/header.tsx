@@ -36,6 +36,7 @@ function CopyButton() {
       className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors dark:text-zinc-400"
       type="button"
       aria-label={text === 'Copied' ? 'URL copied' : 'Copy page URL'}
+      aria-live="polite"
     >
       <TextMorph>{text}</TextMorph>
       <span>URL</span>
@@ -51,7 +52,7 @@ export function Header() {
     <header className="mb-8 flex items-center justify-between">
       <div className="flex items-center gap-3">
         <Avatar className="size-20 group">
-          <AvatarImage src="/avatar.webp" alt="Advaith Krishna A" className="transition-all duration-300 md:group-hover:grayscale-0" />
+          <AvatarImage src="/avatar.webp" alt="Advaith Krishna A" className="transition-all duration-300" />
           <AvatarFallback className="bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100">
             <Zap className="size-12" />
           </AvatarFallback>
