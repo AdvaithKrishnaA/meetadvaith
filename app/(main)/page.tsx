@@ -129,7 +129,7 @@ function ProjectMedia({
           <img
             src={image}
             alt={`${name} preview`}
-            className="aspect-video w-full cursor-zoom-in rounded-xl object-cover transition-all duration-300 md:group-hover:grayscale-0"
+            className="aspect-video w-full cursor-zoom-in rounded-xl object-cover transition-all duration-300"
           />
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
@@ -232,7 +232,7 @@ function ProjectMedia({
             autoPlay
             loop
             muted
-            className="aspect-video w-full cursor-zoom-in rounded-xl grayscale transition-all duration-300 md:group-hover:grayscale-0"
+            className="aspect-video w-full cursor-zoom-in rounded-xl transition-all duration-300"
           />
         </MorphingDialogTrigger>
         <MorphingDialogContainer>
