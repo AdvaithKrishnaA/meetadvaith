@@ -36,6 +36,7 @@ function CopyButton() {
       className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors dark:text-zinc-400"
       type="button"
       aria-label={text === 'Copied' ? 'URL copied' : 'Copy page URL'}
+      aria-live="polite"
     >
       <TextMorph>{text}</TextMorph>
       <span>URL</span>
