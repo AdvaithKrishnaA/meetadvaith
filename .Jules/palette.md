@@ -10,10 +10,10 @@
 **Learning:** Generic link text like "here" is detrimental to accessibility and SEO. Screen reader users often navigate by lists of links/buttons, and "here" provides no context.
 **Action:** Always use descriptive text for links and buttons (e.g., "block my calendar" instead of "here"). If the visible text must be short, use `aria-label` to provide full context.
 
-## 2026-02-15 - [Enhancing Keyboard Discoverability of Animations]
+## 2025-02-15 - [Enhancing Keyboard Discoverability of Animations]
 **Learning:** Delightful micro-interactions like hover-reveal background highlights or color restores are often missed by keyboard users if tied only to pointer events.
 **Action:** Always sync keyboard focus states (`onFocus`, `onBlur`) with hover states to ensure accessibility users experience the same visual cues and "delight" as mouse users.
 
-## 2026-02-15 - [Screen Reader Feedback for Dynamic Label Transitions]
+## 2025-02-15 - [Screen Reader Feedback for Dynamic Label Transitions]
 **Learning:** Transitions between labels (e.g., "Copy" to "Copied") are visually clear but silent to screen readers unless specifically marked.
 **Action:** Use `aria-live="polite"` on elements that undergo text-morphing or label changes to ensure the state transition is announced to assistive technologies.
