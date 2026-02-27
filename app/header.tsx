@@ -33,7 +33,7 @@ function CopyButton() {
   return (
     <button
       onClick={handleCopy}
-      className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors dark:text-zinc-400"
+      className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors hover:text-zinc-900 focus-visible:text-zinc-900 focus-visible:outline-none dark:text-zinc-400 dark:hover:text-zinc-100 dark:focus-visible:text-zinc-100"
       type="button"
       aria-label={text === 'Copied' ? 'URL copied' : 'Copy page URL'}
       aria-live="polite"
@@ -50,17 +50,21 @@ export function Header() {
 
   return (
     <header className="mb-8 flex items-center justify-between">
-      <div className="flex items-center gap-3">
-        <Avatar className="size-20 group">
-          <AvatarImage src="/avatar.webp" alt="Advaith Krishna A" className="transition-all duration-300" />
+      <Link href="/" className="group flex items-center gap-3 focus-visible:outline-none">
+        <Avatar className="size-20">
+          <AvatarImage
+            src="/avatar.webp"
+            alt="Advaith Krishna A"
+            className="transition-all duration-300 group-hover:scale-105 group-focus-visible:scale-105"
+          />
           <AvatarFallback className="bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100">
             <Zap className="size-12" />
           </AvatarFallback>
         </Avatar>
         <div>
-          <Link href="/" className="font-medium text-xl text-black dark:text-white">
+          <span className="font-medium text-xl text-black decoration-zinc-950/20 underline-offset-4 dark:text-white dark:decoration-white/20 group-hover:underline group-focus-visible:underline">
             Advaith Krishna A
-          </Link>
+          </span>
           <TextEffect
             as="p"
             preset="fade"
@@ -71,13 +75,13 @@ export function Header() {
             Product & Tech
           </TextEffect>
         </div>
-      </div>
+      </Link>
       {isBlogPage ? (
         <CopyButton />
       ) : (
         <a
           href="#blog"
-          className="text-black dark:text-white transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+          className="text-black transition-colors hover:text-zinc-900 focus-visible:text-zinc-900 focus-visible:underline focus-visible:outline-none underline-offset-4 dark:text-white dark:hover:text-zinc-100 dark:focus-visible:text-zinc-100"
         >
           Writing
         </a>

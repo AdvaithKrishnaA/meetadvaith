@@ -161,7 +161,7 @@ function ProjectMedia({
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleProjectLinkClick}
-                    className="flex shrink-0 items-center gap-1 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+                    className="flex shrink-0 items-center gap-1 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
                     aria-label={`Visit ${name} (opens in new tab)`}
                   >
                     Visit
@@ -252,7 +252,7 @@ function ProjectMedia({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={handleProjectLinkClick}
-                  className="flex shrink-0 items-center gap-1 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+                  className="flex shrink-0 items-center gap-1 rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
                   aria-label={`Visit ${name} (opens in new tab)`}
                 >
                   Visit
@@ -325,7 +325,7 @@ function MagneticSocialLink({
       <a
         href={link}
         onClick={handleClick}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 focus-visible:bg-zinc-950 focus-visible:text-zinc-50 focus-visible:outline-none dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:focus-visible:bg-zinc-700"
         aria-label={`Visit my ${label} profile (opens in new tab)`}
         target="_blank"
         rel="noopener noreferrer"
@@ -399,14 +399,14 @@ export default function Personal() {
             <span className="group/email inline-flex items-center">
               <a
                 href={`mailto:${EMAIL}`}
-                className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+                className="underline transition-colors hover:text-zinc-900 focus-visible:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-sm dark:hover:text-zinc-100 dark:focus-visible:text-zinc-100"
                 onClick={() => posthog.capture('email_link_clicked', { email: EMAIL })}
               >
                 {EMAIL}
               </a>
               <button
                 onClick={handleCopy}
-                className="inline-flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+                className="inline-flex h-6 w-6 items-center justify-center rounded-md text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
                 aria-label={copied ? 'Email copied' : 'Copy email address'}
               >
                 <AnimatePresence mode="wait" initial={false}>
@@ -442,7 +442,7 @@ export default function Personal() {
               data-cal-namespace="secret"
               data-cal-link="meetadvaith/secret"
               data-cal-config='{"layout":"month_view"}'
-              className="underline transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+              className="underline transition-colors hover:text-zinc-900 focus-visible:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-sm dark:hover:text-zinc-100 dark:focus-visible:text-zinc-100"
               onClick={() => posthog.capture('calendar_booking_clicked', { calendar_link: 'meetadvaith/secret' })}
               aria-label="Book a meeting on my calendar"
             >
@@ -492,14 +492,14 @@ export default function Personal() {
               <div className="px-1">
                 {project.link ? (
                   <a
-                    className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
+                    className="font-base group relative inline-block font-[450] text-zinc-900 focus-visible:outline-none dark:text-zinc-50"
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => posthog.capture('project_clicked', { project_name: project.name, project_link: project.link })}
                   >
                     {project.name}
-                    <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
+                    <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 transition-all duration-200 group-hover:max-w-full group-focus-visible:max-w-full dark:bg-zinc-50"></span>
                   </a>
                 ) : (
                   <span className="font-base font-[450] text-zinc-900 dark:text-zinc-50">
@@ -531,7 +531,7 @@ export default function Personal() {
             {BLOG_POSTS.map((post) => (
               <Link
                 key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
+                className="-mx-3 rounded-xl px-3 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
                 href={post.link}
                 data-id={post.uid}
                 onClick={() => posthog.capture('blog_post_clicked', { post_title: post.title, post_link: post.link, post_uid: post.uid })}
