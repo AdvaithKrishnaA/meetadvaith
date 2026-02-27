@@ -21,21 +21,28 @@ function DownloadModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
       <div className="relative z-10 mx-4 w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-zinc-900">
-        <button onClick={onClose} className="absolute right-4 top-4 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200">
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 text-zinc-400 transition-colors hover:text-zinc-600 focus-visible:text-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 rounded-sm dark:hover:text-zinc-200 dark:focus-visible:text-zinc-200"
+          aria-label="Close modal"
+        >
           <X className="h-5 w-5" />
         </button>
         <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">Opening Ima</h3>
         <div className="space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
           <p>Since Ima is not notarized by Apple, macOS may block it from opening.</p>
           <p>If the app doesn&apos;t open:</p>
-          <ol className="list-decImal space-y-2 pl-5">
+          <ol className="list-decimal space-y-2 pl-5">
             <li>Go to <span className="font-medium text-zinc-900 dark:text-zinc-100">System Settings → Privacy & Security</span></li>
             <li>Scroll down to the Security section</li>
             <li>You&apos;ll see a message about Ima being blocked</li>
             <li>Click <span className="font-medium text-zinc-900 dark:text-zinc-100">Open Anyway</span></li>
           </ol>
         </div>
-        <button onClick={onClose} className="mt-6 w-full rounded-lg bg-zinc-900 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300">
+        <button
+          onClick={onClose}
+          className="mt-6 w-full rounded-lg bg-zinc-900 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+        >
           Got it
         </button>
       </div>
@@ -69,7 +76,10 @@ export default function ImaPage() {
         <div className="space-y-2">
           <h1 className="text-2xl font-medium text-zinc-900 dark:text-zinc-100">Only what matters, now.</h1>
           <p className="text-zinc-600 dark:text-zinc-400">A quiet macOS app where tasks exist only for the time you decide they deserve.</p>
-          <button onClick={handleDownload} className="my-4 inline-flex items-center gap-2 rounded-lg bg-[#CB1B45] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#b01839]">
+          <button
+            onClick={handleDownload}
+            className="my-4 inline-flex items-center gap-2 rounded-lg bg-[#CB1B45] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#b01839] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2"
+          >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
             Download on macOS
           </button>
