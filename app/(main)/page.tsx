@@ -196,7 +196,7 @@ function ProjectMedia({
             </div>
           </MorphingDialogContent>
           <MorphingDialogClose
-            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
             variants={{
               initial: { opacity: 0 },
               animate: {
@@ -375,6 +375,7 @@ export default function Personal() {
 
   return (
     <motion.main
+      id="main-content"
       className="space-y-12"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
@@ -396,7 +397,7 @@ export default function Personal() {
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
-            <span className="group/email inline-flex items-center">
+            <span className="group/email inline-flex items-center" aria-live="polite">
               <a
                 href={`mailto:${EMAIL}`}
                 className="underline transition-colors hover:text-zinc-900 focus-visible:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-sm dark:hover:text-zinc-100 dark:focus-visible:text-zinc-100"
