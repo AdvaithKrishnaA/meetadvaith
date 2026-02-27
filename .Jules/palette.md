@@ -17,7 +17,3 @@
 ## 2026-02-20 - [Screen Reader Feedback for Dynamic Label Transitions]
 **Learning:** Transitions between labels (e.g., "Copy" to "Copied") are visually clear but silent to screen readers unless specifically marked.
 **Action:** Use `aria-live="polite"` on elements that undergo text-morphing or label changes to ensure the state transition is announced to assistive technologies.
-
-## 2026-02-21 - [Consolidated Hit Areas for Navigation]
-**Learning:** Wrapping adjacent identity elements (e.g., Avatar and Name) in a single Link container improves UX by providing a larger hit area and reducing redundant tab stops.
-**Action:** Combine related visual elements that point to the same destination into a single semantic Link component with `group` classes for synchronized hover/focus animations.
