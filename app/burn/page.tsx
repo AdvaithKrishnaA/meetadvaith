@@ -131,6 +131,7 @@ export default function BurnPage() {
                                 <textarea
                                     ref={textareaRef}
                                     autoFocus
+                                    aria-label="Your thought"
                                     value={text}
                                     onChange={e => {
                                         setText(e.target.value)
@@ -154,6 +155,7 @@ export default function BurnPage() {
                                 <button
                                     onClick={handleBurn}
                                     disabled={!text.trim()}
+                                    aria-label="Burn this thought"
                                     className="absolute bottom-4 right-3 w-12 h-12 rounded-full flex items-center justify-center text-white transition disabled:opacity-40 hover:opacity-80"
                                     style={{ backgroundColor: '#E23215' }}
                                 >
