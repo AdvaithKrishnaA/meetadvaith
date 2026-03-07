@@ -284,7 +284,7 @@ function ProjectMedia({
             </div>
           </MorphingDialogContent>
           <MorphingDialogClose
-            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
             variants={{
               initial: { opacity: 0 },
               animate: {
