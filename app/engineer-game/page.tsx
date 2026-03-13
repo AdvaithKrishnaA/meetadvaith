@@ -637,7 +637,7 @@ export default function TechRunnerPage() {
   }, [gameState.gameOver, gameState.started, gameState.score, gameState.pay, gameState.level, gameState.streak])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col items-center py-4 px-4">
+    <main id="main-content" className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col items-center py-4 px-4">
       {/* Header */}
       <div className="mb-4 text-center">
         <h1 className="mb-8 text-lg md:text-xl font-bold text-zinc-900 dark:text-zinc-100 font-mono">
@@ -761,7 +761,7 @@ export default function TechRunnerPage() {
           </div>
         </div>
       )}
-    </div>
+    </main>
   )
 }
 

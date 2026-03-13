@@ -421,7 +421,7 @@ export default function Personal() {
                       aria-live="polite"
                       className="inline-flex"
                     >
-                      <CheckIcon className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
+                      <CheckIcon className="h-3.5 w-3.5 text-green-600 dark:text-green-400" aria-hidden="true" />
                     </motion.span>
                   ) : (
                     <motion.span
@@ -432,7 +432,7 @@ export default function Personal() {
                       transition={{ duration: 0.1 }}
                       className="inline-flex"
                     >
-                      <CopyIcon className="h-3.5 w-3.5" />
+                      <CopyIcon className="h-3.5 w-3.5" aria-hidden="true" />
                     </motion.span>
                   )}
                 </AnimatePresence>
