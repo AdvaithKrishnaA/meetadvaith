@@ -19,7 +19,7 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
                     className="flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors mb-2"
                     ariaLabel={triggerText}
                 >
-                    <HelpCircle className="w-3 h-3" />
+                    <HelpCircle className="w-3 h-3" aria-hidden="true" />
                     {triggerText}
                 </MorphingDialogTrigger>
             ) : (

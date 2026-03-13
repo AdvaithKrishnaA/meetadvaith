@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { X } from 'lucide-react'
+import { XIcon } from 'lucide-react'
 import posthog from 'posthog-js'
 
 function ImaLogo({ className }: { className?: string }) {
@@ -54,7 +54,7 @@ function DownloadModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
           className="absolute right-4 top-4 text-zinc-400 transition-colors hover:text-zinc-600 focus-visible:text-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 rounded-sm dark:hover:text-zinc-200 dark:focus-visible:text-zinc-200"
           aria-label="Close modal"
         >
-          <X className="h-5 w-5" aria-hidden="true" />
+          <XIcon className="h-5 w-5" aria-hidden="true" />
         </button>
         <h3 id="modal-title" className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">Opening Ima</h3>
         <div className="space-y-3 text-sm text-zinc-600 dark:text-zinc-400">
@@ -88,7 +88,7 @@ export default function ImaPage() {
     downloadButtonRef.current?.focus()
   }, [])
 
-  const handleDownload = () => {
+  const handleDownload = useCallback(() => {
     posthog.capture('ima_download_clicked', {
       download_file: 'Ima.zip',
       platform: 'macOS',
@@ -100,13 +100,12 @@ export default function ImaPage() {
     link.click()
     document.body.removeChild(link)
     setShowModal(true)
-  }
+  }, [])
 
   return (
-    <>
+    <main id="main-content" className="py-8 space-y-8">
       <DownloadModal isOpen={showModal} onClose={handleCloseModal} />
-      <main id="main-content" className="py-8 space-y-8">
-        <section className="space-y-4">
+      <section className="space-y-4">
         <ImaLogo className="w-32 h-auto" />
         <div className="space-y-2">
           <h1 className="text-2xl font-medium text-zinc-900 dark:text-zinc-100">Only what matters, now.</h1>
@@ -195,15 +194,14 @@ export default function ImaPage() {
         </div>
       </section>
 
-        <section className="space-y-4">
-          <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">What Ima is not</h2>
-          <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
-            <p>Ima is not:</p>
-            <ul className="space-y-1"><li>– a task manager for everything</li><li>– a system for long-term planning</li><li>– a place to store intentions indefinitely</li></ul>
-            <p>Ima is a small space for what matters within the time you choose.</p>
-          </div>
-        </section>
-      </main>
-    </>
+      <section className="space-y-4">
+        <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">What Ima is not</h2>
+        <div className="space-y-4 text-zinc-600 dark:text-zinc-400">
+          <p>Ima is not:</p>
+          <ul className="space-y-1"><li>– a task manager for everything</li><li>– a system for long-term planning</li><li>– a place to store intentions indefinitely</li></ul>
+          <p>Ima is a small space for what matters within the time you choose.</p>
+        </div>
+      </section>
+    </main>
   )
 }

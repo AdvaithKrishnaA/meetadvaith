@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Flame } from 'lucide-react'
 import posthog from 'posthog-js'
+import { BurnInfoDialog } from './info-dialog'
 
 function BurnLogo({ className }: { className?: string }) {
     return (
@@ -26,8 +27,6 @@ function BurnLogo({ className }: { className?: string }) {
 
     )
 }
-
-import { BurnInfoDialog } from './info-dialog'
 
 export default function BurnPage() {
     const [phase, setPhase] = useState<'onboarding' | 'app'>('onboarding')
