@@ -19,7 +19,7 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
                     className="flex items-center gap-1 text-sm text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors mb-2"
                     ariaLabel={triggerText}
                 >
-                    <HelpCircle className="w-3 h-3" />
+                    <HelpCircle className="w-3 h-3" aria-hidden="true" />
                     {triggerText}
                 </MorphingDialogTrigger>
             ) : (
@@ -85,8 +85,11 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
                         </MorphingDialogClose>
                     </div>
 
-                    <MorphingDialogClose className="absolute right-4 top-4 p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
-                        <XIcon className="h-4 w-4" />
+                    <MorphingDialogClose
+                        className="absolute right-4 top-4 p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                        aria-label="Close dialog"
+                    >
+                        <XIcon className="h-4 w-4" aria-hidden="true" />
                     </MorphingDialogClose>
                 </MorphingDialogContent>
             </MorphingDialogContainer>
