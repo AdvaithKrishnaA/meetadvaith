@@ -278,9 +278,21 @@ function MorphingDialogTitle({
   as: Component = 'div',
 }: MorphingDialogTitleProps) {
   const { uniqueId } = useMorphingDialog()
-  const MotionComponent = motion[
-    Component as keyof typeof motion
-  ] as typeof motion.div
+
+  const MotionComponent = useMemo(() => {
+    const components: Record<string, any> = {
+      div: motion.div,
+      h1: motion.h1,
+      h2: motion.h2,
+      h3: motion.h3,
+      h4: motion.h4,
+      h5: motion.h5,
+      h6: motion.h6,
+      p: motion.p,
+      span: motion.span,
+    }
+    return components[Component as string] || motion.div
+  }, [Component])
 
   return (
     <MotionComponent
@@ -339,9 +351,21 @@ function MorphingDialogDescription({
   as: Component = 'div',
 }: MorphingDialogDescriptionProps) {
   const { uniqueId } = useMorphingDialog()
-  const MotionComponent = motion[
-    Component as keyof typeof motion
-  ] as typeof motion.div
+
+  const MotionComponent = useMemo(() => {
+    const components: Record<string, any> = {
+      div: motion.div,
+      h1: motion.h1,
+      h2: motion.h2,
+      h3: motion.h3,
+      h4: motion.h4,
+      h5: motion.h5,
+      h6: motion.h6,
+      p: motion.p,
+      span: motion.span,
+    }
+    return components[Component as string] || motion.div
+  }, [Component])
 
   return (
     <MotionComponent
