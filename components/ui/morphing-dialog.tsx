@@ -268,17 +268,22 @@ export type MorphingDialogTitleProps = {
   children: React.ReactNode
   className?: string
   style?: React.CSSProperties
+  as?: React.ElementType
 }
 
 function MorphingDialogTitle({
   children,
   className,
   style,
+  as: Component = 'div',
 }: MorphingDialogTitleProps) {
   const { uniqueId } = useMorphingDialog()
+  const MotionComponent = motion[
+    Component as keyof typeof motion
+  ] as typeof motion.div
 
   return (
-    <motion.div
+    <MotionComponent
       layoutId={`dialog-title-container-${uniqueId}`}
       className={className}
       style={style}
@@ -286,7 +291,7 @@ function MorphingDialogTitle({
       id={`motion-ui-morphing-dialog-title-${uniqueId}`}
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   )
 }
 
@@ -323,6 +328,7 @@ export type MorphingDialogDescriptionProps = {
     animate: Variant
     exit: Variant
   }
+  as?: React.ElementType
 }
 
 function MorphingDialogDescription({
@@ -330,11 +336,15 @@ function MorphingDialogDescription({
   className,
   variants,
   disableLayoutAnimation,
+  as: Component = 'div',
 }: MorphingDialogDescriptionProps) {
   const { uniqueId } = useMorphingDialog()
+  const MotionComponent = motion[
+    Component as keyof typeof motion
+  ] as typeof motion.div
 
   return (
-    <motion.div
+    <MotionComponent
       key={`dialog-description-${uniqueId}`}
       layoutId={
         disableLayoutAnimation
@@ -349,7 +359,7 @@ function MorphingDialogDescription({
       id={`motion-ui-morphing-dialog-description-${uniqueId}`}
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   )
 }
 
