@@ -33,10 +33,14 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
 
             <MorphingDialogContainer>
                 <MorphingDialogContent className="relative mx-4 max-w-md bg-white p-6 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-xl">
-                    <MorphingDialogTitle className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+                    <MorphingDialogTitle
+                        as="h2"
+                        className="text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+                    >
                         What is Burn?
                     </MorphingDialogTitle>
                     <MorphingDialogDescription
+                        as="div"
                         className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400"
                     >
                         <div>

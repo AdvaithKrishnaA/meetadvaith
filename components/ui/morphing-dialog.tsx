@@ -268,24 +268,42 @@ export type MorphingDialogTitleProps = {
   children: React.ReactNode
   className?: string
   style?: React.CSSProperties
+  as?: 'div' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
 function MorphingDialogTitle({
   children,
   className,
   style,
+  as = 'div',
 }: MorphingDialogTitleProps) {
   const { uniqueId } = useMorphingDialog()
 
+  const motionComponents = useMemo(
+    () => ({
+      div: motion.div,
+      h2: motion.h2,
+      h3: motion.h3,
+      h4: motion.h4,
+      h5: motion.h5,
+      h6: motion.h6,
+    }),
+    [],
+  )
+
+  const MotionComponent =
+    (motionComponents as any)[as as keyof typeof motionComponents] || motion.div
+
   return (
-    <motion.div
+    <MotionComponent
       layoutId={`dialog-title-container-${uniqueId}`}
       className={className}
       style={style}
       layout
+      id={`motion-ui-morphing-dialog-title-${uniqueId}`}
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   )
 }
 
@@ -322,6 +340,7 @@ export type MorphingDialogDescriptionProps = {
     animate: Variant
     exit: Variant
   }
+  as?: 'div' | 'p' | 'span'
 }
 
 function MorphingDialogDescription({
@@ -329,11 +348,24 @@ function MorphingDialogDescription({
   className,
   variants,
   disableLayoutAnimation,
+  as = 'div',
 }: MorphingDialogDescriptionProps) {
   const { uniqueId } = useMorphingDialog()
 
+  const motionComponents = useMemo(
+    () => ({
+      div: motion.div,
+      p: motion.p,
+      span: motion.span,
+    }),
+    [],
+  )
+
+  const MotionComponent =
+    (motionComponents as any)[as as keyof typeof motionComponents] || motion.div
+
   return (
-    <motion.div
+    <MotionComponent
       key={`dialog-description-${uniqueId}`}
       layoutId={
         disableLayoutAnimation
@@ -345,10 +377,10 @@ function MorphingDialogDescription({
       initial="initial"
       animate="animate"
       exit="exit"
-      id={`dialog-description-${uniqueId}`}
+      id={`motion-ui-morphing-dialog-description-${uniqueId}`}
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   )
 }
 
