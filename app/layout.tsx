@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from 'next-themes'
+import { PostHogProvider } from '@/components/posthog-provider'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -50,13 +51,15 @@ export default function RootLayout({
           storageKey="theme"
           defaultTheme="system"
         >
-          <a
-            href="#main-content"
-            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-zinc-900 focus:ring-2 focus:ring-zinc-500 dark:focus:bg-zinc-900 dark:focus:text-zinc-100"
-          >
-            Skip to content
-          </a>
-          {children}
+          <PostHogProvider>
+            <a
+              href="#main-content"
+              className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-zinc-900 focus:ring-2 focus:ring-zinc-500 dark:focus:bg-zinc-900 dark:focus:text-zinc-100"
+            >
+              Skip to content
+            </a>
+            {children}
+          </PostHogProvider>
         </ThemeProvider>
       </body>
     </html>
