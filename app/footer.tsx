@@ -73,7 +73,7 @@ export function ThemeSwitch() {
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
+    <footer className="mt-16 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
       <div className="flex text-sm text-zinc-600 dark:text-zinc-400 items-center justify-between">
         <span>© 2026 Advaith Krishna A.</span>
         <div className="text-xs text-zinc-400">

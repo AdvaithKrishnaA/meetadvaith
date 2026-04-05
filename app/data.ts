@@ -30,6 +30,13 @@ export const PROJECTS: Project[] = [
     id: 'project1',
   },
   {
+    name: 'Parcel',
+    description: 'A simple app to save and share links, notes, and secrets securely',
+    link: '/parcel',
+    image: '/parcel-cover.svg',
+    id: 'project-parcel',
+  },
+  {
     name: 'Burn',
     description: 'Burn helps you release negative thoughts - write them down, watch them disappear, and get back to better vibes.',
     link: '/burn',
