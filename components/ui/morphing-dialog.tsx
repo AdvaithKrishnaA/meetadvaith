@@ -281,17 +281,25 @@ function MorphingDialogTitle({
   const { uniqueId } = useMorphingDialog()
 
   const MotionComponent = useMemo(() => {
-    const motionComponents = {
-      h1: motion.h1,
-      h2: motion.h2,
-      h3: motion.h3,
-      h4: motion.h4,
-      h5: motion.h5,
-      h6: motion.h6,
-      span: motion.span,
-      div: motion.div,
+    switch (as) {
+      case 'h1':
+        return motion.h1
+      case 'h2':
+        return motion.h2
+      case 'h3':
+        return motion.h3
+      case 'h4':
+        return motion.h4
+      case 'h5':
+        return motion.h5
+      case 'h6':
+        return motion.h6
+      case 'span':
+        return motion.span
+      case 'div':
+      default:
+        return motion.div
     }
-    return motionComponents[as] || motion.div
   }, [as])
 
   return (
@@ -353,12 +361,15 @@ function MorphingDialogDescription({
   const { uniqueId } = useMorphingDialog()
 
   const MotionComponent = useMemo(() => {
-    const motionComponents = {
-      p: motion.p,
-      span: motion.span,
-      div: motion.div,
+    switch (as) {
+      case 'p':
+        return motion.p
+      case 'span':
+        return motion.span
+      case 'div':
+      default:
+        return motion.div
     }
-    return motionComponents[as as keyof typeof motionComponents] || motion.div
   }, [as])
 
   return (
