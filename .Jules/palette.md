@@ -17,3 +17,7 @@
 ## 2026-02-20 - [Screen Reader Feedback for Dynamic Label Transitions]
 **Learning:** Transitions between labels (e.g., "Copy" to "Copied") are visually clear but silent to screen readers unless specifically marked.
 **Action:** Use `aria-live="polite"` on elements that undergo text-morphing or label changes to ensure the state transition is announced to assistive technologies.
+
+## 2026-02-21 - [ARIA Relationship Management in Morphing Dialogs]
+**Learning:** For `MorphingDialog` components to be fully accessible, explicit IDs must be synchronized across sub-components. `MorphingDialogContent` requires `aria-labelledby` and `aria-describedby` pointing to its children, while `MorphingDialogTrigger` requires `aria-controls` pointing to the content container.
+**Action:** Always ensure `MorphingDialogTitle`, `MorphingDialogDescription`, and `MorphingDialogContent` use the specific ID patterns (`motion-ui-morphing-dialog-*`) that their counterparts expect for ARIA attributes.
