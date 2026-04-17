@@ -283,20 +283,28 @@ function MorphingDialogTitle({
   as = 'div',
 }: MorphingDialogTitleProps) {
   const { uniqueId } = useMorphingDialog()
-  const isInContent = React.useContext(MorphingDialogInContentContext)
+  const isInContent = useContext(MorphingDialogInContentContext)
 
   const MotionComponent = useMemo(() => {
-    const components = {
-      h1: motion.h1,
-      h2: motion.h2,
-      h3: motion.h3,
-      h4: motion.h4,
-      h5: motion.h5,
-      h6: motion.h6,
-      span: motion.span,
-      div: motion.div,
+    switch (as) {
+      case 'h1':
+        return motion.h1
+      case 'h2':
+        return motion.h2
+      case 'h3':
+        return motion.h3
+      case 'h4':
+        return motion.h4
+      case 'h5':
+        return motion.h5
+      case 'h6':
+        return motion.h6
+      case 'span':
+        return motion.span
+      case 'div':
+      default:
+        return motion.div
     }
-    return components[as] || motion.div
   }, [as])
 
   return (
@@ -343,6 +351,7 @@ function MorphingDialogSubtitle({
 export type MorphingDialogDescriptionProps = {
   children: React.ReactNode
   className?: string
+  style?: React.CSSProperties
   disableLayoutAnimation?: boolean
   variants?: {
     initial: Variant
@@ -355,20 +364,24 @@ export type MorphingDialogDescriptionProps = {
 function MorphingDialogDescription({
   children,
   className,
+  style,
   variants,
   disableLayoutAnimation,
   as = 'div',
 }: MorphingDialogDescriptionProps) {
   const { uniqueId } = useMorphingDialog()
-  const isInContent = React.useContext(MorphingDialogInContentContext)
+  const isInContent = useContext(MorphingDialogInContentContext)
 
   const MotionComponent = useMemo(() => {
-    const components = {
-      p: motion.p,
-      span: motion.span,
-      div: motion.div,
+    switch (as) {
+      case 'p':
+        return motion.p
+      case 'span':
+        return motion.span
+      case 'div':
+      default:
+        return motion.div
     }
-    return components[as] || motion.div
   }, [as])
 
   return (
@@ -381,6 +394,7 @@ function MorphingDialogDescription({
       }
       variants={variants}
       className={className}
+      style={style}
       initial="initial"
       animate="animate"
       exit="exit"
