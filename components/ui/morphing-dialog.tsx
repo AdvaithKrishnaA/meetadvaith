@@ -31,6 +31,8 @@ export type MorphingDialogContextType = {
 const MorphingDialogContext =
   React.createContext<MorphingDialogContextType | null>(null)
 
+const MorphingDialogInContentContext = React.createContext<boolean>(false)
+
 function useMorphingDialog() {
   const context = useContext(MorphingDialogContext)
   if (!context) {
@@ -220,8 +222,11 @@ function MorphingDialogContent({
       aria-modal="true"
       aria-labelledby={`motion-ui-morphing-dialog-title-${uniqueId}`}
       aria-describedby={`motion-ui-morphing-dialog-description-${uniqueId}`}
+      id={`motion-ui-morphing-dialog-content-${uniqueId}`}
     >
-      {children}
+      <MorphingDialogInContentContext.Provider value={true}>
+        {children}
+      </MorphingDialogInContentContext.Provider>
     </motion.div>
   )
 }
@@ -268,24 +273,46 @@ export type MorphingDialogTitleProps = {
   children: React.ReactNode
   className?: string
   style?: React.CSSProperties
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div'
 }
 
 function MorphingDialogTitle({
   children,
   className,
   style,
+  as = 'div',
 }: MorphingDialogTitleProps) {
   const { uniqueId } = useMorphingDialog()
+  const isInContent = React.useContext(MorphingDialogInContentContext)
+
+  const MotionComponent = useMemo(() => {
+    const components = {
+      h1: motion.h1,
+      h2: motion.h2,
+      h3: motion.h3,
+      h4: motion.h4,
+      h5: motion.h5,
+      h6: motion.h6,
+      span: motion.span,
+      div: motion.div,
+    }
+    return components[as] || motion.div
+  }, [as])
 
   return (
-    <motion.div
+    <MotionComponent
       layoutId={`dialog-title-container-${uniqueId}`}
       className={className}
       style={style}
       layout
+      id={
+        isInContent
+          ? `motion-ui-morphing-dialog-title-${uniqueId}`
+          : undefined
+      }
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   )
 }
 
@@ -322,6 +349,7 @@ export type MorphingDialogDescriptionProps = {
     animate: Variant
     exit: Variant
   }
+  as?: 'p' | 'span' | 'div'
 }
 
 function MorphingDialogDescription({
@@ -329,11 +357,22 @@ function MorphingDialogDescription({
   className,
   variants,
   disableLayoutAnimation,
+  as = 'div',
 }: MorphingDialogDescriptionProps) {
   const { uniqueId } = useMorphingDialog()
+  const isInContent = React.useContext(MorphingDialogInContentContext)
+
+  const MotionComponent = useMemo(() => {
+    const components = {
+      p: motion.p,
+      span: motion.span,
+      div: motion.div,
+    }
+    return components[as] || motion.div
+  }, [as])
 
   return (
-    <motion.div
+    <MotionComponent
       key={`dialog-description-${uniqueId}`}
       layoutId={
         disableLayoutAnimation
@@ -345,10 +384,14 @@ function MorphingDialogDescription({
       initial="initial"
       animate="animate"
       exit="exit"
-      id={`dialog-description-${uniqueId}`}
+      id={
+        isInContent
+          ? `motion-ui-morphing-dialog-description-${uniqueId}`
+          : undefined
+      }
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   )
 }
 
