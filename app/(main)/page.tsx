@@ -45,14 +45,16 @@ function TallyForm() {
 
   useEffect(() => {
     const loadTally = () => {
-      if (typeof window !== 'undefined' && (window as any).Tally) {
-        ; (window as any).Tally.loadEmbeds()
+      if (typeof window !== 'undefined' && window.Tally) {
+        window.Tally.loadEmbeds()
       } else {
-        const iframes = document.querySelectorAll(
+        const iframes = document.querySelectorAll<HTMLIFrameElement>(
           'iframe[data-tally-src]:not([src])'
         )
-        iframes.forEach((iframe: any) => {
-          iframe.src = iframe.dataset.tallySrc
+        iframes.forEach((iframe) => {
+          if (iframe.dataset.tallySrc) {
+            iframe.src = iframe.dataset.tallySrc
+          }
         })
       }
     }
