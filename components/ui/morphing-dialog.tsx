@@ -31,6 +31,8 @@ export type MorphingDialogContextType = {
 const MorphingDialogContext =
   React.createContext<MorphingDialogContextType | null>(null)
 
+const MorphingDialogInContentContext = React.createContext<boolean>(false)
+
 function useMorphingDialog() {
   const context = useContext(MorphingDialogContext)
   if (!context) {
@@ -211,18 +213,21 @@ function MorphingDialogContent({
   })
 
   return (
-    <motion.div
-      ref={containerRef}
-      layoutId={`dialog-${uniqueId}`}
-      className={cn('overflow-hidden', className)}
-      style={style}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={`motion-ui-morphing-dialog-title-${uniqueId}`}
-      aria-describedby={`motion-ui-morphing-dialog-description-${uniqueId}`}
-    >
-      {children}
-    </motion.div>
+    <MorphingDialogInContentContext.Provider value={true}>
+      <motion.div
+        ref={containerRef}
+        layoutId={`dialog-${uniqueId}`}
+        className={cn('overflow-hidden', className)}
+        style={style}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={`motion-ui-morphing-dialog-title-${uniqueId}`}
+        aria-describedby={`motion-ui-morphing-dialog-description-${uniqueId}`}
+        id={`motion-ui-morphing-dialog-content-${uniqueId}`}
+      >
+        {children}
+      </motion.div>
+    </MorphingDialogInContentContext.Provider>
   )
 }
 
@@ -268,24 +273,49 @@ export type MorphingDialogTitleProps = {
   children: React.ReactNode
   className?: string
   style?: React.CSSProperties
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div'
 }
 
 function MorphingDialogTitle({
   children,
   className,
   style,
+  as = 'div',
 }: MorphingDialogTitleProps) {
   const { uniqueId } = useMorphingDialog()
+  const isInContent = useContext(MorphingDialogInContentContext)
+
+  const MotionComponent = useMemo(() => {
+    switch (as) {
+      case 'h1':
+        return motion.h1
+      case 'h2':
+        return motion.h2
+      case 'h3':
+        return motion.h3
+      case 'h4':
+        return motion.h4
+      case 'h5':
+        return motion.h5
+      case 'h6':
+        return motion.h6
+      case 'span':
+        return motion.span
+      default:
+        return motion.div
+    }
+  }, [as])
 
   return (
-    <motion.div
+    <MotionComponent
       layoutId={`dialog-title-container-${uniqueId}`}
       className={className}
       style={style}
       layout
+      id={isInContent ? `motion-ui-morphing-dialog-title-${uniqueId}` : undefined}
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   )
 }
 
@@ -322,6 +352,7 @@ export type MorphingDialogDescriptionProps = {
     animate: Variant
     exit: Variant
   }
+  as?: 'p' | 'span' | 'div'
 }
 
 function MorphingDialogDescription({
@@ -329,11 +360,24 @@ function MorphingDialogDescription({
   className,
   variants,
   disableLayoutAnimation,
+  as = 'div',
 }: MorphingDialogDescriptionProps) {
   const { uniqueId } = useMorphingDialog()
+  const isInContent = useContext(MorphingDialogInContentContext)
+
+  const MotionComponent = useMemo(() => {
+    switch (as) {
+      case 'p':
+        return motion.p
+      case 'span':
+        return motion.span
+      default:
+        return motion.div
+    }
+  }, [as])
 
   return (
-    <motion.div
+    <MotionComponent
       key={`dialog-description-${uniqueId}`}
       layoutId={
         disableLayoutAnimation
@@ -345,10 +389,14 @@ function MorphingDialogDescription({
       initial="initial"
       animate="animate"
       exit="exit"
-      id={`dialog-description-${uniqueId}`}
+      id={
+        isInContent
+          ? `motion-ui-morphing-dialog-description-${uniqueId}`
+          : undefined
+      }
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   )
 }
 
