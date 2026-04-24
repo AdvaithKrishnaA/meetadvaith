@@ -8,6 +8,7 @@ import React, {
   useMemo,
   useRef,
   useState,
+  createContext,
 } from 'react'
 import {
   motion,
@@ -28,10 +29,11 @@ export type MorphingDialogContextType = {
   triggerRef: React.RefObject<HTMLDivElement>
 }
 
-const MorphingDialogContext =
-  React.createContext<MorphingDialogContextType | null>(null)
+const MorphingDialogContext = createContext<MorphingDialogContextType | null>(
+  null,
+)
 
-const MorphingDialogInContentContext = React.createContext<boolean>(false)
+const MorphingDialogInContentContext = createContext<boolean>(false)
 
 function useMorphingDialog() {
   const context = useContext(MorphingDialogContext)

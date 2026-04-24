@@ -409,7 +409,7 @@ export default function Personal() {
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
-            <span className="group/email inline-flex items-center" aria-live="polite">
+            <span className="group/email inline-flex items-center">
               <a
                 href={`mailto:${EMAIL}`}
                 className="underline transition-colors hover:text-zinc-900 focus-visible:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-sm dark:hover:text-zinc-100 dark:focus-visible:text-zinc-100"
@@ -448,6 +448,9 @@ export default function Personal() {
                   )}
                 </AnimatePresence>
               </button>
+              <span className="sr-only" aria-live="polite">
+                {copied ? 'Email copied to clipboard' : ''}
+              </span>
             </span>
             {' '}or{' '}
             <button

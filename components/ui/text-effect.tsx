@@ -8,7 +8,7 @@ import {
   Variant,
   Variants,
 } from 'motion/react'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 export type PresetType = 'blur' | 'fade-in-blur' | 'scale' | 'fade' | 'slide'
 
@@ -223,7 +223,7 @@ export function TextEffect({
 }: TextEffectProps) {
   const segments = splitText(children, per)
 
-  const MotionTag = React.useMemo(() => {
+  const MotionTag = useMemo(() => {
     switch (as) {
       case 'h1':
         return motion.h1
