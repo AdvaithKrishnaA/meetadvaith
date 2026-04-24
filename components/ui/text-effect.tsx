@@ -222,7 +222,29 @@ export function TextEffect({
   style,
 }: TextEffectProps) {
   const segments = splitText(children, per)
-  const MotionTag = motion[as as keyof typeof motion] as typeof motion.div
+
+  const MotionTag = React.useMemo(() => {
+    switch (as) {
+      case 'h1':
+        return motion.h1
+      case 'h2':
+        return motion.h2
+      case 'h3':
+        return motion.h3
+      case 'h4':
+        return motion.h4
+      case 'h5':
+        return motion.h5
+      case 'h6':
+        return motion.h6
+      case 'span':
+        return motion.span
+      case 'div':
+        return motion.div
+      default:
+        return motion.p
+    }
+  }, [as]) as typeof motion.p
 
   const baseVariants = preset
     ? presetVariants[preset]
