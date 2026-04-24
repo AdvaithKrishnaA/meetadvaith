@@ -8,6 +8,8 @@ import {
   MorphingDialogContent,
   MorphingDialogClose,
   MorphingDialogContainer,
+  MorphingDialogTitle,
+  MorphingDialogDescription,
 } from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
@@ -144,18 +146,20 @@ function ProjectMedia({
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <h3
+                  <MorphingDialogTitle
+                    as="h3"
                     className={`text-lg font-medium ${showForm ? 'text-zinc-900' : 'text-zinc-900 dark:text-zinc-50'
                       }`}
                   >
                     {name}
-                  </h3>
-                  <p
+                  </MorphingDialogTitle>
+                  <MorphingDialogDescription
+                    as="p"
                     className={`text-sm ${showForm ? 'text-zinc-600' : 'text-zinc-600 dark:text-zinc-400'
                       }`}
                   >
                     {description}
-                  </p>
+                  </MorphingDialogDescription>
                 </div>
                 {link && (
                   <a
@@ -198,7 +202,7 @@ function ProjectMedia({
             </div>
           </MorphingDialogContent>
           <MorphingDialogClose
-            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:bg-zinc-900"
             variants={{
               initial: { opacity: 0 },
               animate: {
@@ -242,12 +246,18 @@ function ProjectMedia({
             <div className="flex flex-col gap-4 rounded-2xl bg-zinc-50 p-4 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-50">
+                  <MorphingDialogTitle
+                    as="h3"
+                    className="text-lg font-medium text-zinc-900 dark:text-zinc-50"
+                  >
                     {name}
-                  </h3>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                  </MorphingDialogTitle>
+                  <MorphingDialogDescription
+                    as="p"
+                    className="text-sm text-zinc-600 dark:text-zinc-400"
+                  >
                     {description}
-                  </p>
+                  </MorphingDialogDescription>
                 </div>
                 <a
                   href={link}
@@ -286,7 +296,7 @@ function ProjectMedia({
             </div>
           </MorphingDialogContent>
           <MorphingDialogClose
-            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:bg-zinc-900"
             variants={{
               initial: { opacity: 0 },
               animate: {
@@ -399,7 +409,7 @@ export default function Personal() {
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
             Former quizzer. Documentary lover. Serial vibe-coder. Product person by choice. You can reach me at{' '}
-            <span className="group/email inline-flex items-center" aria-live="polite">
+            <span className="group/email inline-flex items-center">
               <a
                 href={`mailto:${EMAIL}`}
                 className="underline transition-colors hover:text-zinc-900 focus-visible:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-sm dark:hover:text-zinc-100 dark:focus-visible:text-zinc-100"
@@ -420,7 +430,6 @@ export default function Personal() {
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{ scale: 0.5, opacity: 0 }}
                       transition={{ duration: 0.1 }}
-                      aria-live="polite"
                       className="inline-flex"
                     >
                       <CheckIcon className="h-3.5 w-3.5 text-green-600 dark:text-green-400" aria-hidden="true" />
@@ -439,6 +448,9 @@ export default function Personal() {
                   )}
                 </AnimatePresence>
               </button>
+              <span className="sr-only" aria-live="polite">
+                {copied ? 'Email copied to clipboard' : ''}
+              </span>
             </span>
             {' '}or{' '}
             <button

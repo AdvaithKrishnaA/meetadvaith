@@ -5,7 +5,7 @@ import { useMemo, useId } from 'react'
 
 export type TextMorphProps = {
   children: string
-  as?: React.ElementType
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div'
   className?: string
   style?: React.CSSProperties
   variants?: Variants
@@ -14,13 +14,38 @@ export type TextMorphProps = {
 
 export function TextMorph({
   children,
-  as: Component = 'p',
+  as = 'span',
   className,
   style,
   variants,
   transition,
 }: TextMorphProps) {
   const uniqueId = useId()
+
+  const Component = useMemo(() => {
+    switch (as) {
+      case 'h1':
+        return motion.h1
+      case 'h2':
+        return motion.h2
+      case 'h3':
+        return motion.h3
+      case 'h4':
+        return motion.h4
+      case 'h5':
+        return motion.h5
+      case 'h6':
+        return motion.h6
+      case 'p':
+        return motion.p
+      case 'div':
+        return motion.div
+      case 'span':
+        return motion.span
+      default:
+        return motion.span
+    }
+  }, [as])
 
   const characters = useMemo(() => {
     const charCounts: Record<string, number> = {}
