@@ -17,7 +17,7 @@ export type PerType = 'word' | 'char' | 'line'
 export type TextEffectProps = {
   children: string
   per?: PerType
-  as?: keyof React.JSX.IntrinsicElements
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div'
   variants?: {
     container?: Variants
     item?: Variants
@@ -241,10 +241,12 @@ export function TextEffect({
         return motion.span
       case 'div':
         return motion.div
+      case 'p':
+        return motion.p
       default:
         return motion.p
     }
-  }, [as]) as typeof motion.p
+  }, [as])
 
   const baseVariants = preset
     ? presetVariants[preset]
