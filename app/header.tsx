@@ -33,7 +33,7 @@ function CopyButton() {
   return (
     <button
       onClick={handleCopy}
-      className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors dark:text-zinc-400"
+      className="font-base flex items-center gap-1 text-center text-sm text-zinc-500 transition-colors hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 rounded-sm dark:text-zinc-400 dark:hover:text-zinc-100"
       type="button"
       aria-label={text === 'Copied' ? 'URL copied' : 'Copy page URL'}
       aria-live="polite"
@@ -84,7 +84,7 @@ export function Header() {
       ) : (
         <a
           href="#blog"
-          className="text-black dark:text-white transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+          className="rounded-sm text-black transition-colors hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:outline-none dark:text-white dark:hover:text-zinc-100"
         >
           Writing
         </a>
