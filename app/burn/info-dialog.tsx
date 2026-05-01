@@ -100,4 +100,3 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
         </MorphingDialog>
     )
 }
-
