@@ -8,7 +8,7 @@ import {
   Variant,
   Variants,
 } from 'motion/react'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 export type PresetType = 'blur' | 'fade-in-blur' | 'scale' | 'fade' | 'slide'
 
@@ -17,7 +17,7 @@ export type PerType = 'word' | 'char' | 'line'
 export type TextEffectProps = {
   children: string
   per?: PerType
-  as?: keyof React.JSX.IntrinsicElements
+  as?: 'p' | 'span' | 'div' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
   variants?: {
     container?: Variants
     item?: Variants
@@ -222,7 +222,30 @@ export function TextEffect({
   style,
 }: TextEffectProps) {
   const segments = splitText(children, per)
-  const MotionTag = motion[as as keyof typeof motion] as typeof motion.div
+  const MotionTag = useMemo(() => {
+    switch (as) {
+      case 'p':
+        return motion.p
+      case 'span':
+        return motion.span
+      case 'div':
+        return motion.div
+      case 'h1':
+        return motion.h1
+      case 'h2':
+        return motion.h2
+      case 'h3':
+        return motion.h3
+      case 'h4':
+        return motion.h4
+      case 'h5':
+        return motion.h5
+      case 'h6':
+        return motion.h6
+      default:
+        return motion.p
+    }
+  }, [as]) as typeof motion.p
 
   const baseVariants = preset
     ? presetVariants[preset]
