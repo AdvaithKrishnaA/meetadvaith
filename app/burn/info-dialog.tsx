@@ -86,7 +86,7 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
                     </div>
 
                     <MorphingDialogClose
-                        className="absolute right-4 top-4 p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                        className="absolute right-4 top-4 p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 rounded-sm"
                         aria-label="Close dialog"
                     >
                         <XIcon className="h-4 w-4" aria-hidden="true" />

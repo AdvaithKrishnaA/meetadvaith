@@ -217,6 +217,7 @@ function MorphingDialogContent({
       className={cn('overflow-hidden', className)}
       style={style}
       role="dialog"
+      id={`motion-ui-morphing-dialog-content-${uniqueId}`}
       aria-modal="true"
       aria-labelledby={`motion-ui-morphing-dialog-title-${uniqueId}`}
       aria-describedby={`motion-ui-morphing-dialog-description-${uniqueId}`}
@@ -268,24 +269,49 @@ export type MorphingDialogTitleProps = {
   children: React.ReactNode
   className?: string
   style?: React.CSSProperties
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div'
 }
 
 function MorphingDialogTitle({
   children,
   className,
   style,
+  as = 'div',
 }: MorphingDialogTitleProps) {
   const { uniqueId } = useMorphingDialog()
 
+  const Component = useMemo(() => {
+    switch (as) {
+      case 'h1':
+        return motion.h1
+      case 'h2':
+        return motion.h2
+      case 'h3':
+        return motion.h3
+      case 'h4':
+        return motion.h4
+      case 'h5':
+        return motion.h5
+      case 'h6':
+        return motion.h6
+      case 'span':
+        return motion.span
+      case 'div':
+      default:
+        return motion.div
+    }
+  }, [as])
+
   return (
-    <motion.div
+    <Component
       layoutId={`dialog-title-container-${uniqueId}`}
       className={className}
       style={style}
       layout
+      id={`motion-ui-morphing-dialog-title-${uniqueId}`}
     >
       {children}
-    </motion.div>
+    </Component>
   )
 }
 
@@ -317,6 +343,7 @@ export type MorphingDialogDescriptionProps = {
   children: React.ReactNode
   className?: string
   disableLayoutAnimation?: boolean
+  as?: 'p' | 'span' | 'div'
   variants?: {
     initial: Variant
     animate: Variant
@@ -329,11 +356,24 @@ function MorphingDialogDescription({
   className,
   variants,
   disableLayoutAnimation,
+  as = 'div',
 }: MorphingDialogDescriptionProps) {
   const { uniqueId } = useMorphingDialog()
 
+  const Component = useMemo(() => {
+    switch (as) {
+      case 'p':
+        return motion.p
+      case 'span':
+        return motion.span
+      case 'div':
+      default:
+        return motion.div
+    }
+  }, [as])
+
   return (
-    <motion.div
+    <Component
       key={`dialog-description-${uniqueId}`}
       layoutId={
         disableLayoutAnimation
@@ -345,10 +385,10 @@ function MorphingDialogDescription({
       initial="initial"
       animate="animate"
       exit="exit"
-      id={`dialog-description-${uniqueId}`}
+      id={`motion-ui-morphing-dialog-description-${uniqueId}`}
     >
       {children}
-    </motion.div>
+    </Component>
   )
 }
 
