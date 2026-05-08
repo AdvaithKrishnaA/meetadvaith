@@ -8,8 +8,6 @@ import {
   MorphingDialogContent,
   MorphingDialogClose,
   MorphingDialogContainer,
-  MorphingDialogTitle,
-  MorphingDialogDescription,
 } from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
@@ -146,20 +144,18 @@ function ProjectMedia({
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <MorphingDialogTitle
-                    as="h3"
+                  <h3
                     className={`text-lg font-medium ${showForm ? 'text-zinc-900' : 'text-zinc-900 dark:text-zinc-50'
                       }`}
                   >
                     {name}
-                  </MorphingDialogTitle>
-                  <MorphingDialogDescription
-                    as="p"
+                  </h3>
+                  <p
                     className={`text-sm ${showForm ? 'text-zinc-600' : 'text-zinc-600 dark:text-zinc-400'
                       }`}
                   >
                     {description}
-                  </MorphingDialogDescription>
+                  </p>
                 </div>
                 {link && (
                   <a
@@ -202,7 +198,7 @@ function ProjectMedia({
             </div>
           </MorphingDialogContent>
           <MorphingDialogClose
-            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:bg-zinc-900 dark:text-zinc-400"
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
             variants={{
               initial: { opacity: 0 },
               animate: {
@@ -246,15 +242,12 @@ function ProjectMedia({
             <div className="flex flex-col gap-4 rounded-2xl bg-zinc-50 p-4 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
-                  <MorphingDialogTitle
-                    as="h3"
-                    className="text-lg font-medium text-zinc-900 dark:text-zinc-50"
-                  >
+                  <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-50">
                     {name}
-                  </MorphingDialogTitle>
-                  <MorphingDialogDescription as="p" className="text-sm text-zinc-600 dark:text-zinc-400">
+                  </h3>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
                     {description}
-                  </MorphingDialogDescription>
+                  </p>
                 </div>
                 <a
                   href={link}
@@ -293,7 +286,7 @@ function ProjectMedia({
             </div>
           </MorphingDialogContent>
           <MorphingDialogClose
-            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 dark:bg-zinc-900 dark:text-zinc-400"
+            className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
             variants={{
               initial: { opacity: 0 },
               animate: {
