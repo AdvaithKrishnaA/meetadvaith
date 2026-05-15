@@ -327,7 +327,7 @@ function MagneticSocialLink({
       <a
         href={link}
         onClick={handleClick}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 focus-visible:bg-zinc-950 focus-visible:text-zinc-50 focus-visible:outline-none dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:focus-visible:bg-zinc-700"
+        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 focus-visible:bg-zinc-950 focus-visible:text-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:focus-visible:bg-zinc-700"
         aria-label={`Visit my ${label} profile (opens in new tab)`}
         target="_blank"
         rel="noopener noreferrer"
@@ -534,7 +534,7 @@ export default function Personal() {
             {BLOG_POSTS.map((post) => (
               <Link
                 key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500"
+                className="-mx-3 rounded-xl px-3 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2"
                 href={post.link}
                 data-id={post.uid}
                 onClick={() => posthog.capture('blog_post_clicked', { post_title: post.title, post_link: post.link, post_uid: post.uid })}
