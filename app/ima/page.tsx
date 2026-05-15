@@ -51,7 +51,7 @@ function DownloadModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
       <div className="relative z-10 mx-4 w-full max-w-md rounded-2xl bg-white p-6 shadow-xl dark:bg-zinc-900">
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 text-zinc-400 transition-colors hover:text-zinc-600 focus-visible:text-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 rounded-sm dark:hover:text-zinc-200 dark:focus-visible:text-zinc-200"
+          className="absolute right-4 top-4 text-zinc-400 transition-colors hover:text-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-md p-1 dark:hover:text-zinc-200"
           aria-label="Close modal"
         >
           <XIcon className="h-5 w-5" aria-hidden="true" />

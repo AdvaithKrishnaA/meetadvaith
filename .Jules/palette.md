@@ -17,3 +17,7 @@
 ## 2026-02-20 - [Screen Reader Feedback for Dynamic Label Transitions]
 **Learning:** Transitions between labels (e.g., "Copy" to "Copied") are visually clear but silent to screen readers unless specifically marked.
 **Action:** Use `aria-live="polite"` on elements that undergo text-morphing or label changes to ensure the state transition is announced to assistive technologies.
+
+## 2026-02-21 - [Standardizing Focus Visuals Across Surfaces]
+**Learning:** Inconsistent focus indicators (some using browser defaults, some missing entirely) create a disjointed experience for keyboard users. A shared design token/pattern for focus rings ensures visual coherence and accessibility compliance.
+**Action:** Use the standardized Tailwind utility pattern `focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2` for all interactive elements to ensure a consistent and high-contrast focus state.
