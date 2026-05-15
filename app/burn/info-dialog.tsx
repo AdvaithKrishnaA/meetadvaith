@@ -80,13 +80,13 @@ export function BurnInfoDialog({ triggerText, iconTrigger = false }: { triggerTe
                     </MorphingDialogDescription>
 
                     <div className="mt-6 flex justify-end">
-                        <MorphingDialogClose className="relative static bg-zinc-900 dark:bg-zinc-100 text-white dark:text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors">
+                        <MorphingDialogClose className="relative static bg-zinc-900 dark:bg-zinc-100 text-white dark:text-black px-4 py-2 rounded-lg text-sm font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2">
                             Got it
                         </MorphingDialogClose>
                     </div>
 
                     <MorphingDialogClose
-                        className="absolute right-4 top-4 p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                        className="absolute right-4 top-4 p-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 rounded-full dark:bg-zinc-900"
                         aria-label="Close dialog"
                     >
                         <XIcon className="h-4 w-4" aria-hidden="true" />
